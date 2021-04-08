@@ -1,6 +1,7 @@
 package fr.eni.groupe2.dal.jdbc;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -187,6 +188,45 @@ public class UtilisateurDAOJdbcImpl implements DAO <Utilisateur> {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public static Utilisateur validerConnection(String login, String password) {
+		
+		Connection cnx = null;
+		try {
+			cnx = DBConnexion.seConnecter();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			String reqSql = "SELECT * FROM UTILISATEURS WHERE pseudo ='" + login + "' AND mot_de_passe='" + password + "'";
+			Statement st = cnx.createStatement();
+			ResultSet rs = st.executeQuery(reqSql);
+			if (rs.next()) {
+				return new Utilisateur(
+					rs.getInt("noUtilisateur"),
+					rs.getString("pseudo"),
+					rs.getString("nom"),
+					rs.getString("prenom"),
+					rs.getString("email"),
+					rs.getString("telephone"),
+					rs.getString("rue"),
+					rs.getString("codePostal"),
+					rs.getString("ville"),
+					rs.getString("motDePasse"),
+					rs.getInt("credit"),
+					rs.getBoolean("administrateur")
+				);
+			}else 
+				return null;
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 
 	
 }
