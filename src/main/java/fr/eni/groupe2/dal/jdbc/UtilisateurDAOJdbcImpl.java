@@ -25,7 +25,7 @@ public class UtilisateurDAOJdbcImpl implements DAO <Utilisateur> {
 		try {
 			cnx = DBConnexion.seConnecter();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -57,7 +57,6 @@ public class UtilisateurDAOJdbcImpl implements DAO <Utilisateur> {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 	}
 		
