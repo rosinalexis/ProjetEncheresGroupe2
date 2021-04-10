@@ -5,13 +5,14 @@ import java.util.List;
 import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.dal.DAO;
 import fr.eni.groupe2.dal.DAOFactory;
+import fr.eni.groupe2.messages.DALException;
 
 
 public class UtilisateurManager {
 
 	private static  DAO<Utilisateur> utilisateurDAO= DAOFactory.getUtilisateurDAO();
 	
-	public static boolean ajouterUtilisateur(Utilisateur utilisateur)  {
+	public static boolean ajouterUtilisateur(Utilisateur utilisateur) throws DALException  {
 		boolean ok  = false ; 
 		
 		List<Utilisateur> utilisateurs  =  new ArrayList<Utilisateur>(); 
@@ -35,9 +36,15 @@ public class UtilisateurManager {
 		return ok;
 	}
 
-	public  static List<Utilisateur> listerUtlisateur (){
+	public  static List<Utilisateur> listerUtlisateur () throws DALException{
 		return utilisateurDAO.selectAll();	
 	}
+
+	public static Utilisateur rechercherUtilisateur(int id) throws DALException {
+		
+			return utilisateurDAO.selectByID(id); 
+	}
+
 }
 
 

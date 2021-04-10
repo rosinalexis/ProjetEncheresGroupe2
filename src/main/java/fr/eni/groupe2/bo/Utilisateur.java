@@ -1,6 +1,6 @@
 package fr.eni.groupe2.bo;
 
-import fr.eni.groupe2.db.BusinessException;
+import fr.eni.groupe2.messages.BusinessException;
 
 /**
  * 

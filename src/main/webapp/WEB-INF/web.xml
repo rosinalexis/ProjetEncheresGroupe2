@@ -23,6 +23,22 @@
 		<servlet-name>Inscription</servlet-name>
 		<url-pattern>/inscription</url-pattern>
 	</servlet-mapping>
-
 	
+	<servlet>
+		<servlet-name>Profil</servlet-name>
+		<servlet-class>fr.eni.groupe2.servlets.Profil</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Profil</servlet-name>
+		<url-pattern>/profil</url-pattern>
+	</servlet-mapping>
+	
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+		</jsp-property-group>
+	</jsp-config>
+
 </web-app>
