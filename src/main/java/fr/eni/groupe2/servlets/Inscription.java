@@ -29,7 +29,7 @@ public class Inscription extends HttpServlet {
 			errorMessage = e.getMessage();
 			request.setAttribute("errorMessage", errorMessage);
 		}
-		this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -75,6 +75,6 @@ public class Inscription extends HttpServlet {
 			errorMessage = e.getMessage();
 			request.setAttribute("errorMessage", errorMessage);
 		}
-		this.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 	}
 }
