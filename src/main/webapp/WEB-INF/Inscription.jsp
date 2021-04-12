@@ -96,7 +96,7 @@
                         </div>
                     </div>
 
-           <!---------BOUTON CREER ------>
+           			<!---------BOUTON CREER ------>
                     <div class="col-md-2 col-md-offset-2" >
                         <input type="submit" name="submit" class="btn btn-success btn-block-connexion" style="float: left" onclick="window.location.href='../SeConnecter.html.html';" />
                     </div>

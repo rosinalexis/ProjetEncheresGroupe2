@@ -14,21 +14,13 @@ import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 
-@WebServlet("/Inscription")
+@WebServlet(name ="Inscritption" ,
+			urlPatterns=("/Inscription"))
 public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String errorMessage="";
-
-		try {
-			request.setAttribute("utilisateurs", UtilisateurManager.listerUtlisateur());
-		} catch (DALException e) {
-			errorMessage = e.getMessage();
-			request.setAttribute("errorMessage", errorMessage);
-		}
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 	}
 
