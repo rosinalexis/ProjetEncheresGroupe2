@@ -1,4 +1,4 @@
-package servlets;
+package fr.eni.groupe2.servlets;
 
 import java.io.IOException;
 
