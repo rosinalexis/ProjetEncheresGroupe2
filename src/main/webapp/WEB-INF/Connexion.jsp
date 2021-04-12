@@ -18,8 +18,6 @@
 			<c:if test="${!empty errorMessage }">
 				<div class="alert alert-danger" role="alert">
 					<c:out value="${errorMessage}"></c:out>
-					<c:out value="${login}"></c:out>
-					<c:out value="${password}"></c:out>
 				</div>
 			</c:if>
 			
