@@ -1,0 +1,174 @@
+body {
+    background: #333;
+}
+
+h3 {
+    margin-top: 10px !important;
+}
+
+#login {
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+    margin-top: 50px;
+}
+
+@media(max-width:820px) {
+    #login {
+        -webkit-perspective: 1000px;
+        -moz-perspective: 1000px;
+        perspective: 1000px;
+        margin-top: 15%;
+
+    }
+}
+
+
+.login {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 12px;
+
+
+}
+
+
+
+
+
+.login .btn {
+    border-radius: 10px !important;
+    padding: 9px 12px;
+    margin-top: 2%;
+
+}
+
+.btn-block-connexion {
+    display: block;
+
+    margin-bottom: 9px;
+    font-size-adjust: auto;
+}
+
+.btn-block-Annuler {
+    display: block;
+
+    margin-bottom: 9px;
+    font-size-adjust: auto;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+    display: inline-block;
+    height: 25px !important;
+}
+
+
+
+@media(max-width:820px) {
+    .btn-block-connexion {
+        display: block;
+        width: 50%;
+        margin-bottom: 9px;
+        font-size-adjust: auto;
+    }
+}
+
+.form-check-label {
+    font-size: 14px;
+
+}
+
+@media(max-width:820px) {
+    .form-check-label {
+        font-size: 8px;
+    }
+
+    #password {
+        margin-left: 20%;
+    }
+}
+
+#password {
+    text-align: center;
+}
+
+.login .form-group {
+    margin-bottom: 17px;
+}
+
+.login .form-control,
+.login .btn {
+    border-radius: 0;
+    padding: 19px 12px;
+}
+
+
+.input-group-addon {
+    border-radius: 0;
+    color: #fff;
+    background: #f3aa0c;
+    border: #f3aa0c;
+}
+
+.forgot {
+    font-size: 16px;
+}
+
+.forgot a {
+    color: #333;
+}
+
+.forgot a:hover {
+    color: #5cb85c;
+}
+
+.sucess {
+    text-align: center importantS;
+}
+
+#inner-wrapper,
+#contact-us .contact-form,
+#contact-us .our-address {
+    color: #1d1d1d;
+    font-size: 19px;
+    line-height: 1.7em;
+    font-weight: 300;
+    padding: 30px;
+    padding-bottom: 35%;
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 100px;
+}
+
+.input-group-addon {
+    border-radius: 50% 20% / 10% 40%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    color: #fff;
+    background: #1f678cd4;
+
+    border: #1f678cd4;
+    border-right-color: rgb(243, 170, 12);
+    border-right-style: none;
+    border-right-width: medium;
+}
+
+.from-checkbox {
+    float: right;
+
+}

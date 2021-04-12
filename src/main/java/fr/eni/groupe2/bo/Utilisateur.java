@@ -1,6 +1,6 @@
 package fr.eni.groupe2.bo;
 
-import fr.eni.groupe2.db.BusinessException;
+import fr.eni.groupe2.messages.BusinessException;
 
 /**
  * 
@@ -30,9 +30,8 @@ public class Utilisateur {
 	}
 
 	// Constructeur avec paramètres
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
-
+	
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) {
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -42,9 +41,19 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-		this.credit = credit;
-
+		this.administrateur = false; 
+		this.credit = 0; 
 	}
+	
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
+		
+		this(pseudo,nom, prenom,email,telephone,rue,codePostal,ville, motDePasse);
+		this.noUtilisateur  = noUtilisateur; 
+		this.credit = credit;
+		this.administrateur =administrateur;
+	}
+	
 
 	// Getters et Setters
 	public int getNoUtilisateur() {
@@ -65,7 +74,11 @@ public class Utilisateur {
 
 		if (pseudo.isEmpty()) {
 			throw new BusinessException("le pseudo est vide !");
-		} else {
+		} 
+		else if (pseudo.length()>30) {
+			throw new BusinessException("le pseudo est invalide !");
+		}
+		else {
 
 			this.pseudo = pseudo;
 		}
@@ -79,7 +92,11 @@ public class Utilisateur {
 
 		if (nom.isEmpty()) {
 			throw new BusinessException("le nom est vide !");
-		} else {
+		} 
+		else if (nom.length()>30) {
+			throw new BusinessException("le nom n'est pas valide!");
+		}
+		else {
 			this.nom = nom;
 		}
 	}
@@ -89,9 +106,15 @@ public class Utilisateur {
 	}
 
 	public void setPrenom(String prenom) throws BusinessException {
+		
 		if (prenom.isEmpty()) {
+			
 			throw new BusinessException("le prenom est vide !");
-		} else {
+		} 
+		else if (prenom.length()>30) {
+			throw new BusinessException("le prenom est invalide !");
+		}
+		else {
 			this.prenom = prenom;
 		}
 
@@ -105,7 +128,12 @@ public class Utilisateur {
 
 		if (email.isEmpty()) {
 			throw new BusinessException("l'email est vide !");
-		} else {
+		} 
+		else if( email.length()>30) {
+			
+			throw new BusinessException("l'email est invalide  !");
+		}
+		else {
 			this.email = email;
 		}
 
@@ -119,7 +147,11 @@ public class Utilisateur {
 
 		if (telephone.isEmpty()) {
 			throw new BusinessException("le téléphone est vide !");
-		} else {
+		}
+		else if(telephone.length()>15) {
+			throw new BusinessException("le numéro de téléphone n'est pas valide  !");
+		}
+		else {
 			this.telephone = telephone;
 		}
 
@@ -133,7 +165,11 @@ public class Utilisateur {
 
 		if (rue.isEmpty()) {
 			throw new BusinessException("la rue est vide !");
-		} else {
+		} 
+		else if (rue.length() > 30) {
+			throw new BusinessException("la rue n'est pas valide!");
+		}
+		else {
 			this.rue = rue;
 		}
 
@@ -146,7 +182,11 @@ public class Utilisateur {
 	public void setCodePostal(String codePostal) throws BusinessException {
 		if (codePostal.isEmpty()) {
 			throw new BusinessException("le code postal est vide !");
-		} else {
+		} 
+		else if (codePostal.length()>10) {
+			throw new BusinessException("le code postal n'est pas valide !");
+		}
+		else {
 			this.codePostal = codePostal;
 		}
 
@@ -158,9 +198,14 @@ public class Utilisateur {
 
 	public void setVille(String ville) throws BusinessException {
 		if (ville.isEmpty()) {
+			
 			throw new BusinessException("la ville est vide !");
 
-		} else {
+		}
+		else if (ville.length()>30){
+			throw new BusinessException("le  nom de la ville n'est  pas valide !");
+		}
+		else {
 			this.ville = ville;
 		}
 

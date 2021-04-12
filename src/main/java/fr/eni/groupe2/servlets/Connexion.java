@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.groupe2.bo.Utilisateur;
 import  fr.eni.groupe2.dal.jdbc.UtilisateurDAOJdbcImpl;
 
-@WebServlet(urlPatterns="/connexion", loadOnStartup = 1)
+@WebServlet(urlPatterns="/Connexion", loadOnStartup = 1)
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,7 @@ public class Connexion extends HttpServlet {
 		request.setAttribute("login", "");
 		request.setAttribute("password", "");
 		request.setAttribute("errorMessage", "");
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
 		
 	};	
 
@@ -36,10 +36,10 @@ public class Connexion extends HttpServlet {
 		if(utilisateurConnecter != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("utilisateurConnecter", utilisateurConnecter);
-			request.getRequestDispatcher("/pageAccueil.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errorMessage", "MAUVAISE CONNEXION");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/pageAccueil.jsp").forward(request, response);
 		}
 		
 	}
