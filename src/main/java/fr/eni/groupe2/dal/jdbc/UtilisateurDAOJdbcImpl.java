@@ -265,9 +265,9 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 			Statement st = cnx.createStatement();
 			ResultSet rs = st.executeQuery(reqSql);
 			if (rs.next()) {
-				return new Utilisateur(rs.getInt("noUtilisateur"), rs.getString("pseudo"), rs.getString("nom"),
+				return new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"),
 						rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"),
-						rs.getString("codePostal"), rs.getString("ville"), rs.getString("motDePasse"),
+						rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"),
 						rs.getInt("credit"), rs.getBoolean("administrateur"));
 			} else
 				return null;

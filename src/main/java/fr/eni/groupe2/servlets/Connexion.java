@@ -31,8 +31,12 @@ public class Connexion extends HttpServlet {
 		
 		request.setAttribute("login", login);
 		request.setAttribute("password", password);
+		System.out.println(login);
+		System.out.println(password);
 		
 		Utilisateur utilisateurConnecter = UtilisateurDAOJdbcImpl.validerConnection(login, password);
+		System.out.println(utilisateurConnecter);
+		
 		if(utilisateurConnecter != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("utilisateurConnecter", utilisateurConnecter);

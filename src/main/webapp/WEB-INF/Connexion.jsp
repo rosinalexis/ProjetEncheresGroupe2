@@ -18,6 +18,8 @@
 			<c:if test="${!empty errorMessage }">
 				<div class="alert alert-danger" role="alert">
 					<c:out value="${errorMessage}"></c:out>
+					<c:out value="${login}"></c:out>
+					<c:out value="${password}"></c:out>
 				</div>
 			</c:if>
 			
@@ -30,7 +32,7 @@
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i>Identifiant</i> </span> <input
-									type="text" name="login" class="form-control"
+									type="text" name="id" class="form-control"
 									placeholder="Saisir ID" />
 
 							</div>
@@ -39,7 +41,7 @@
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i>Mot de passe</i> </span> <input
-									type="password" name="password" class="form-control"
+									type="password" name="mdp" class="form-control"
 									placeholder="Saisir MdP" />
 							</div>
 						</div>

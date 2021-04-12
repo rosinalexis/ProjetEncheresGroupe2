@@ -7,13 +7,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.groupe2.bll.UtilisateurManager;
 import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
-
+/**
+ * 
+ * @author groupe 2 
+ * @projet ENI ENCHERES  AVRIL 2021
+ * @description La servlet inscription permet de convertir les données de l'utilisateur en 
+ * un objet de type utilisateur et permet l'enregistrement de celui-ci en base.
+ * 
+ * 
+ *
+ */
 @WebServlet(name ="Inscritption" ,
 			urlPatterns=("/Inscription"))
 public class Inscription extends HttpServlet {
@@ -67,6 +77,20 @@ public class Inscription extends HttpServlet {
 			errorMessage = e.getMessage();
 			request.setAttribute("errorMessage", errorMessage);
 		}
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
+		
+		if ( errorMessage.isEmpty()) {
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
+		}
+		else {
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("nom", utilisateur.getNom());
+			session.setAttribute("prenom", utilisateur.getPrenom());
+			session.setAttribute("pseudo", utilisateur.getPrenom()); 
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+		}
+		
 	}
 }
