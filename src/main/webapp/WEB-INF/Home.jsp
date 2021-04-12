@@ -5,7 +5,7 @@
 <%@ include file="miseEnPage/head.jsp" %>
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/login.css" rel="stylesheet">  
 <body>
-<%@ include file="miseEnPage/headerprofile.jsp" %>
+<%@ include file="miseEnPage/headerHome.jsp" %>
  <div class="container" style="background-color: white;">
   <div class="col-md-6 col-sm-12">
                 <section class="todo_section">

@@ -31,12 +31,13 @@ public class Connexion extends HttpServlet {
 		
 		request.setAttribute("login", login);
 		request.setAttribute("password", password);
-		
+	
 		Utilisateur utilisateurConnecter = UtilisateurDAOJdbcImpl.validerConnection(login, password);
+		
 		if(utilisateurConnecter != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("utilisateurConnecter", utilisateurConnecter);
-			request.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errorMessage", "MAUVAISE CONNEXION");
 			request.getRequestDispatcher("WEB-INF/Connexion.jsp").forward(request, response);
