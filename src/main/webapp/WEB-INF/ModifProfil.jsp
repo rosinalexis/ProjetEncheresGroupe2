@@ -31,7 +31,6 @@
 				</div>
 			</c:if>
 
-
 			<article>
 				<form action="/ProjetEncheresGroupe2/ModifProfil" method="POST">
 					<!---------INPUT PSEUDO ------>

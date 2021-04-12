@@ -122,6 +122,7 @@
 							class="btn btn-success btn-block-connexion" style="float: left"
 							 />
 					</div>
+					
 					<!---------BOUTON ANNULER ------>
 					<div class="col-md-2 col-md-offset-4">
 						<a href="Accueil"><button type="button" class="btn btn-success btn-block-annuler"

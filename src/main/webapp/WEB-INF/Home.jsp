@@ -32,6 +32,7 @@
                 </section>
             </div>
 
+
             <!---------------------------Bouton recherche -------------------->
             <div class="col-md-6 col-xs-8 " id="pad_btn" style="padding-top: 30px">
                 <input type="button" value="Rechercher" class="btn btn-secondary btn-lg " onclick="window.location.href='../Acquereur/DetailVente.html';" id="btn_search">

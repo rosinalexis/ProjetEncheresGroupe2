@@ -29,6 +29,7 @@ public class Accueil extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
 	}
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

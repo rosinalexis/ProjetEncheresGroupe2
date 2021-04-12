@@ -34,7 +34,6 @@ public class Deconnexion extends HttpServlet {
 
        /* Redirection vers la page de connexion */
        response.sendRedirect("Accueil");}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

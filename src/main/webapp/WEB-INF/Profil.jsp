@@ -94,6 +94,7 @@
                     <a href="Home"><button type="button" class="btn btn-success btn-block-annuler"  style="float: right;
                                                                                     margin-right: 8%;
                                                                                     margin-top: 8%;">Annuler</button></a>
+                                                                                    
                     <!---------Marge bottom------>
                     <div class="forgot"></div>
 

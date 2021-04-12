@@ -34,6 +34,7 @@ public class Connexion extends HttpServlet {
 	
 		Utilisateur utilisateurConnecter = UtilisateurDAOJdbcImpl.validerConnection(login, password);
 		
+		
 		if(utilisateurConnecter != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("utilisateurConnecter", utilisateurConnecter);
