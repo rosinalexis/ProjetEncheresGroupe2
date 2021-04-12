@@ -39,7 +39,7 @@ public class Connexion extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(request, response);
 		} else {
 			request.setAttribute("errorMessage", "MAUVAISE CONNEXION");
-			request.getRequestDispatcher("WEB-INF/pageAccueil.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/Connexion.jsp").forward(request, response);
 		}
 		
 	}

@@ -31,14 +31,14 @@ public class Inscription extends HttpServlet {
 		String errorMessage = "";
 
 		try {
-			utilisateur.setPseudo(request.getParameter("pseudo"));
-			utilisateur.setNom(request.getParameter("nom"));
-			utilisateur.setPrenom(request.getParameter("prenom"));
-			utilisateur.setEmail(request.getParameter("email"));
-			utilisateur.setTelephone(request.getParameter("telephone"));
-			utilisateur.setRue(request.getParameter("rue"));
-			utilisateur.setCodePostal(request.getParameter("codePostal"));
-			utilisateur.setVille(request.getParameter("ville"));
+			utilisateur.setPseudo(request.getParameter("pseudo").toLowerCase());
+			utilisateur.setNom(request.getParameter("nom").toLowerCase());
+			utilisateur.setPrenom(request.getParameter("prenom").toLowerCase());
+			utilisateur.setEmail(request.getParameter("email").toLowerCase());
+			utilisateur.setTelephone(request.getParameter("telephone").toLowerCase());
+			utilisateur.setRue(request.getParameter("rue").toLowerCase());
+			utilisateur.setCodePostal(request.getParameter("codePostal").toLowerCase());
+			utilisateur.setVille(request.getParameter("ville").toLowerCase());
 			utilisateur.setCredit(0);
 			utilisateur.setAdministrateur(false);
 
@@ -58,7 +58,7 @@ public class Inscription extends HttpServlet {
 				}
 
 			} else {
-				errorMessage = "les Mots de passe sont differents !";
+				errorMessage = "Les mots de passe sont différents !";
 				request.setAttribute("errorMessage", errorMessage);
 			}
 
@@ -67,6 +67,6 @@ public class Inscription extends HttpServlet {
 			errorMessage = e.getMessage();
 			request.setAttribute("errorMessage", errorMessage);
 		}
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 	}
 }

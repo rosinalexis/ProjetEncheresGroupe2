@@ -6,7 +6,6 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
 <!-- JavaScript Bundle with Popper -->
 <script src="<%=request.getContextPath() %>/dist/bootstrap/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath() %>/dist/bootstrap/js/bootstrap.min.js"></script>
