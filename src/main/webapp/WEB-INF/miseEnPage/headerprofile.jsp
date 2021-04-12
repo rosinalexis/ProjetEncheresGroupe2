@@ -15,11 +15,11 @@
                     </li>
                     <li><a href="#">Page 2</a></li>
                 </ul> -->
-            <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Enchères</a></li>
                     <li><a href="#" >Vendre un article</a></li>
                     <li><a href="#">Mon Profil</a></li>
-                    <li><a href='Deconnexion'><span>Déconnexion</span></a></li>
+                    <li><a href='#'><span>Déconnexion</span></a></li>
                     <!-- tester si l'utilisateur est connecté -->
       
                 </ul>
