@@ -28,7 +28,6 @@
 	                        </form>
                     </section>
 
-
                     <section class="second">
                         <label  for="categorie" >Catégorie :</label>
                             <select class="form-control mb-2 mr-sm-2" id="categorie" >

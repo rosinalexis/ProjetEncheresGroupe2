@@ -1,9 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="fr">
 <%@ include file="miseEnPage/head.jsp"%>
-<link href="<%=request.getContextPath() %>/dist/bootstrap/css/login.css" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/dist/bootstrap/css/login.css"
+	rel="stylesheet">
 <body>
 	<%@ include file="miseEnPage/headercompte.jsp"%>
 	<div class="col-md-4" id="login">
@@ -32,7 +33,6 @@
 									type="text" name="id" class="form-control"
 									placeholder="Saisir ID" />
 
-
 							</div>
 						</div>
 						<!---------INPUT PASSWORD ------>
@@ -45,7 +45,7 @@
 						</div>
 						<!---------BOUTON CONNECTION ------>
 						<button type="submit" class="btn btn-success btn-block-connexion"
-							style="float: left">Connexion</button>
+							style="float: left">connexion</button>
 						<!---------CHECKBOX ------>
 						<div class="form-check" style="float: right; width: 40%">
 							<input type="checkbox" class="form-check-input" name="remember"
@@ -53,13 +53,14 @@
 
 
 							<div class="form-check-label">
-								<a href="#" class="form-check-label"
-									id="pass"> Mot de passe oubliÃ© </a>
+								<a href="mot-de-passe-oublie.php" class="form-check-label"
+									id="pass"> Mot de passe oublié </a>
 							</div>
 						</div>
 						<!---------MOT DE PASSE OUBLIE------>
-						<a href="Inscription"><button type="button" class="btn btn-success btn-block"
-							>crÃ©er un compte</button></a>
+						<button type="button" class="btn btn-success btn-block"
+							onclick="window.location.href='registre.html';">créer un
+							compte</button>
 						<!---------BOUTON CREER COMPTE ------>
 						<div class="forgot"></div>
 					</fieldset>

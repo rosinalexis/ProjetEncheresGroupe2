@@ -14,7 +14,7 @@
 	<div class="col-md-10 col-md-offset-1" id="login">
 		<section id="inner-wrapper" class="login">
 			<div style="text-align: center">
-				<h2>Créer un compte</h2>
+				<h2>CrÃ©er un compte</h2>
 			</div>
 			<br>
 
@@ -54,7 +54,7 @@
 					<!---------INPUT PRENOM ------>
 					<div class="col-md-6 form-group">
 						<div class="input-group">
-							<span class="input-group-addon"><i>Prénom</i></span> <input
+							<span class="input-group-addon"><i>PrÃ©nom</i></span> <input
 								type="text" class="form-control" value="${prenom}" name="prenom">
 							<label>${erreurPrenom}</label>
 						</div>
@@ -70,7 +70,7 @@
 					<!---------INPUT TELEPHONE ------>
 					<div class="col-md-6 form-group">
 						<div class="input-group">
-							<span class="input-group-addon"><i>Télé©phone</i></span> <input
+							<span class="input-group-addon"><i>TÃ©lÃ©phone</i></span> <input
 								type="text" class="form-control" value="${telephone}"
 								name="telephone"> <label>${erreurTelephone}</label>
 						</div>
@@ -120,13 +120,13 @@
 					<div class="col-md-2 col-md-offset-2">
 						<input type="submit" name="submit"
 							class="btn btn-success btn-block-connexion" style="float: left"
-							 />
+							onclick="window.location.href='../SeConnecter.html.html';" />
 					</div>
-					
 					<!---------BOUTON ANNULER ------>
 					<div class="col-md-2 col-md-offset-4">
-						<a href="Accueil"><button type="button" class="btn btn-success btn-block-annuler"
-							style="float: right">Annuler</button></a>
+						<button type="button" class="btn btn-success btn-block-annuler"
+							onclick="window.location.href='../../index.html';"
+							style="float: right">Annuler</button>
 					</div>
 					<!---------Marge bottom------>
 					<div class="forgot"></div>

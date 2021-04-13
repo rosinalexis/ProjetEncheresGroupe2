@@ -40,8 +40,9 @@ public class MonProfil extends HttpServlet {
 			errorMessage = e.getMessage();
 			request.setAttribute("errorMessage", errorMessage);
 		}
-		request.getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request, response);
+		request.getRequestDispatcher("/profil.jsp").forward(request, response);
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

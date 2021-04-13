@@ -52,7 +52,6 @@ public class Inscription extends HttpServlet {
 			utilisateur.setCredit(0);
 			utilisateur.setAdministrateur(false);
 
-			
 			if (request.getParameter("motDePasse").equals(request.getParameter("confirmation"))) {
 				utilisateur.setMotDePasse(request.getParameter("motDePasse"));
 
