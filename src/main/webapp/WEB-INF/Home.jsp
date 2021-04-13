@@ -10,6 +10,7 @@
   <div class="col-md-6 col-sm-12">
                 <section class="todo_section">
                     <h4 class="index_text_input">Filtres :</h4>
+                    
                     <section>
                         <form class="needs-validation col-md-12 col-sm-12 " novalidate>
                             <div class="input-group">
