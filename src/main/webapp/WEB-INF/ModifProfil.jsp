@@ -31,9 +31,8 @@
 				</div>
 			</c:if>
 
-
 			<article>
-				<form action="/ProjetEncheresGroupe2/Inscription" method="POST">
+				<form action="/ProjetEncheresGroupe2/ModifProfil" method="POST">
 					<!---------INPUT PSEUDO ------>
 
 					<div class="col-md-6 form-group">
@@ -54,7 +53,7 @@
 					<!---------INPUT PRENOM ------>
 					<div class="col-md-6 form-group">
 						<div class="input-group">
-							<span class="input-group-addon"><i>Prénom</i></span> <input
+						<span class="input-group-addon"><i>Prénom</i></span> <input
 								type="text" class="form-control" value="${prenom}" name="prenom">
 							<label>${erreurPrenom}</label>
 						</div>
@@ -70,7 +69,7 @@
 					<!---------INPUT TELEPHONE ------>
 					<div class="col-md-6 form-group">
 						<div class="input-group">
-							<span class="input-group-addon"><i>Télé©phone</i></span> <input
+							<span class="input-group-addon"><i>Téléphone</i></span> <input
 								type="text" class="form-control" value="${telephone}"
 								name="telephone"> <label>${erreurTelephone}</label>
 						</div>
@@ -110,7 +109,7 @@
 					<!---------INPUT CONFIRMATION MDP ------>
 					<div class="col-sm-6 form-group">
 						<div class="input-group">
-							<span class="input-group-addon"><i>Confirmation</i></span> <input
+							<span class="input-group-addon"><i>Enregistrer</i></span> <input
 								type="password" class="form-control" name="confirmation" /> <label>${erreurConfirm}
 								${erreurMdp}</label>
 						</div>
@@ -122,11 +121,10 @@
 							class="btn btn-success btn-block-connexion" style="float: left"
 							 />
 					</div>
-					
 					<!---------BOUTON ANNULER ------>
 					<div class="col-md-2 col-md-offset-4">
-						<a href="Accueil"><button type="button" class="btn btn-success btn-block-annuler"
-							style="float: right">Annuler</button></a>
+						<a href="SupprimeProfil"><button type="button" class="btn btn-success btn-block-annuler"
+							style="float: right">Supprimer mon compte</button></a>
 					</div>
 					<!---------Marge bottom------>
 					<div class="forgot"></div>
