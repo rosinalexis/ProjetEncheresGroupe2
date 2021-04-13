@@ -8,13 +8,20 @@ import java.sql.Statement;
 
 import fr.eni.groupe2.messages.DALException;
 
-
+/**
+ * 
+ * @author groupe 2 
+ * @projet PROJET ENI ENCHERES AVRIL 2021
+ * 
+ * @description DBConnexion est une classe helper qui permet d'initier la connexion et la déconnexion à la base de données.
+ */
 public class DBConnexion {
-
+	
 	private static final String URI=Settings.getProperty("url");
 	private static final String USER=Settings.getProperty("user");
 	private static final String PWD=Settings.getProperty("password");
 	
+	//initie la connexion à la base de données
 	public static Connection seConnecter()throws DALException {
 		Connection cnx = null;
 	
@@ -36,6 +43,7 @@ public class DBConnexion {
 		return cnx;							
 	}	
 	
+	//permet la déconnexion à la base de données lors d'une requet de type stmt  
 	public static void seDeconnecter(Connection cnx, Statement stmt) throws DALException{								
 		
 		try {							
@@ -51,7 +59,9 @@ public class DBConnexion {
 									
 		}							
 	}								
-									
+					
+	
+	//permet la déconnexion à la base de données lors d'une requête préparé
 	public static void seDeconnecter(Connection cnx, PreparedStatement pstmt) throws DALException{								
 									
 		try {							

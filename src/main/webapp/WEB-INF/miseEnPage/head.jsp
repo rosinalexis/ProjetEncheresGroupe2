@@ -8,11 +8,12 @@
 
 <!-- JavaScript Bundle with Popper -->
 <script src="<%=request.getContextPath() %>/dist/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath() %>/dist/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath() %>/dist/bootstrap/js/bootstrap.min.js"></script>
  <link href="<%=request.getContextPath() %>/dist/bootstrap/css/form-validation.css" rel="stylesheet">
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/style.css" rel="stylesheet">
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/all.css" rel="stylesheet">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="<%=request.getContextPath() %>/dist/bootstrap/js/jquery-1.11.1.min.j"></script>
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!--<link href="<%=request.getContextPath() %>/dist/bootstrap/css/login.css" rel="stylesheet"> -->
     <!--load all styles -->

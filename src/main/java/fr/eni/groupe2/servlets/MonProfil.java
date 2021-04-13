@@ -13,10 +13,15 @@ import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.messages.DALException;
 
 /**
- * Servlet implementation class Profil
+ * @author groupe 2
+ * @projet ENI ENCHERES 2021
+ * 
+ * @description Servlet implementation class Profil
+ * Permet l'affiche du profil d'un utilisateur via ses données de sessions.
+ * 
  */
-@WebServlet("/Profil")
-public class Profil extends HttpServlet {
+@WebServlet("/MonProfil")
+public class MonProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
@@ -25,7 +30,7 @@ public class Profil extends HttpServlet {
 		Utilisateur utilisateurConnecter = new Utilisateur(); 
 		String errorMessage ="";
 		
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
 		utilisateurConnecter =(Utilisateur) session.getAttribute("utilisateurConnecter");
 			
 		try {
@@ -37,6 +42,7 @@ public class Profil extends HttpServlet {
 		}
 		request.getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request, response);
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

@@ -1,16 +1,23 @@
 package fr.eni.groupe2.bo;
 
+import java.io.Serializable;
+
 import fr.eni.groupe2.messages.BusinessException;
 
 /**
  * 
  * @author Groupe2
  * @description projet ENCHERES ENI 2021. La Classe Utilisateur permet de
- *              renseigner les informations d'un utilisateur.
+ * renseigner les informations d'un utilisateur.
  *
  */
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// les attribus d'un utilisateur
 	private int noUtilisateur;
 	private String pseudo;
@@ -30,32 +37,62 @@ public class Utilisateur {
 	}
 
 	// Constructeur avec paramètres
-	
-	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) {
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.administrateur = false; 
-		this.credit = 0; 
+	/**
+	 * Le constructeur pour les servlets
+	 * @param pseudo
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param telephone
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param motDePasse
+	 * @throws BusinessException
+	 */
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws BusinessException {
+		setPseudo(pseudo);
+		setNom(nom);
+		setPrenom(prenom);
+		setEmail(email);
+		setTelephone(telephone);
+		setRue(rue);
+		setCodePostal(codePostal);
+		setVille(ville);
+		setMotDePasse(motDePasse);
+		setAdministrateur(false); 
+		setCredit(0); 
 	}
 	
+	/**
+	 * le constructeur pour les requêtes sql 
+	 * @param noUtilisateur
+	 * @param pseudo
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param telephone
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param motDePasse
+	 * @param credit
+	 * @param administrateur
+	 * @throws BusinessException
+	 */
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) {
+			String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) throws BusinessException {
 		
 		this(pseudo,nom, prenom,email,telephone,rue,codePostal,ville, motDePasse);
-		this.noUtilisateur  = noUtilisateur; 
-		this.credit = credit;
-		this.administrateur =administrateur;
+		setNoUtilisateur(noUtilisateur); 
+		setCredit(credit);
+		setAdministrateur(administrateur);
 	}
 	
 
 	// Getters et Setters
+	
+	
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}

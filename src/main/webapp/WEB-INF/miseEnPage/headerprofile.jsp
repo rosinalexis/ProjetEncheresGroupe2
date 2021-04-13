@@ -1,6 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<header>
-                <nav class="navbar navbar-inverse">
+    <header>
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="Accueil"><b><i>ENI</i></b>-Enchère</a>
@@ -15,12 +14,15 @@
                         </ul>
                     </li>
                     <li><a href="#">Page 2</a></li>
-                </ul> 
+                </ul> -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="Inscription" ><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-                    <li><a href="Connexion"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
-                </ul>-->
+                    <li><a href="#">Enchères</a></li>
+                    <li><a href="#" >Vendre un article</a></li>
+                    <li><a href="MonProfil">Mon Profil</a></li>
+                    <li><a href='#'><span>Déconnexion</span></a></li>
+                    <!-- tester si l'utilisateur est connecté -->
+      
+                </ul>
             </div>
         </nav>
-
     </header>

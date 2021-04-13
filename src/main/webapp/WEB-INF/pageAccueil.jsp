@@ -5,12 +5,11 @@
 <%@ include file="miseEnPage/head.jsp" %>
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/login.css" rel="stylesheet">  
 <body>
-<%@ include file="miseEnPage/headerHome.jsp" %>
+<%@ include file="miseEnPage/headerprofile.jsp" %>
  <div class="container" style="background-color: white;">
   <div class="col-md-6 col-sm-12">
                 <section class="todo_section">
                     <h4 class="index_text_input">Filtres :</h4>
-                    
                     <section>
                         <form class="needs-validation col-md-12 col-sm-12 " novalidate>
                             <div class="input-group">
@@ -32,7 +31,6 @@
                     </section>
                 </section>
             </div>
-
 
             <!---------------------------Bouton recherche -------------------->
             <div class="col-md-6 col-xs-8 " id="pad_btn" style="padding-top: 30px">
