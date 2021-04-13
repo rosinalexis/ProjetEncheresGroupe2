@@ -38,7 +38,7 @@
 					<div class="col-md-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Pseudo</i></span> <input
-								type="text" class="form-control" value="${pseudo}" name="pseudo">
+								type="text" class="form-control" value="${pseudo}" placeholder="${utilisateur.pseudo}" name="pseudo">
 							<label>${erreurPseudo}</label>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 					<div class="col-md-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Nom</i></span> <input
-								type="text" class="form-control" value="${nom}" name="nom">
+								type="text" class="form-control" value="${nom}" placeholder="${utilisateur.nom}" name="nom">
 							<label>${erreurNom}</label>
 						</div>
 					</div>
@@ -54,7 +54,7 @@
 					<div class="col-md-6 form-group">
 						<div class="input-group">
 						<span class="input-group-addon"><i>Prénom</i></span> <input
-								type="text" class="form-control" value="${prenom}" name="prenom">
+								type="text" class="form-control" value="${prenom}" placeholder="${utilisateur.prenom}" name="prenom">
 							<label>${erreurPrenom}</label>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 					<div class="col-md-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Email</i></span> <input
-								type="text" class="form-control" value="${email}" name="email">
+								type="text" class="form-control" value="${email}" placeholder="${utilisateur.email}" name="email">
 							<label class="is-invalid">${erreurEmail}</label>
 						</div>
 					</div>
@@ -70,15 +70,14 @@
 					<div class="col-md-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Téléphone</i></span> <input
-								type="text" class="form-control" value="${telephone}"
-								name="telephone"> <label>${erreurTelephone}</label>
+								type="text" class="form-control" value="${telephone}" placeholder="${utilisateur.telephone}" name="telephone"> <label>${erreurTelephone}</label>
 						</div>
 					</div>
 					<!---------INPUT RUE ------>
 					<div class="col-md-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Rue</i></span> <input
-								type="text" class="form-control" value="${rue}" name="rue">
+								type="text" class="form-control" value="${rue}" placeholder="${utilisateur.rue}" name="rue">
 							<label>${erreurRue}</label>
 						</div>
 					</div>
@@ -87,14 +86,14 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i>Code postal</i></span> <input
 								type="text" class="form-control" value="${codePostal}"
-								name="codePostal"> <label>${erreurPost}</label>
+								placeholder="${utilisateur.codePostal}" name="codePostal"> <label>${erreurPost}</label>
 						</div>
 					</div>
 					<!---------INPUT VILLE ------>
 					<div class="col-md-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Ville</i></span> <input
-								type="text" class="form-control" value="${ville}" name="ville">
+								type="text" class="form-control" value="${ville}" placeholder="${utilisateur.ville}" name="ville">
 							<label>${erreurVille}</label>
 						</div>
 					</div>
@@ -103,14 +102,14 @@
 					<div class="col-sm-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Mot de passe</i></span> <input
-								type="password" class="form-control" name="motDePasse" required />
+								type="password" class="form-control"  name="motDePasse" required />
 						</div>
 					</div>
 					<!---------INPUT CONFIRMATION MDP ------>
 					<div class="col-sm-6 form-group">
 						<div class="input-group">
 							<span class="input-group-addon"><i>Enregistrer</i></span> <input
-								type="password" class="form-control" name="confirmation" /> <label>${erreurConfirm}
+								type="password" class="form-control"  name="confirmation" /> <label>${erreurConfirm}
 								${erreurMdp}</label>
 						</div>
 					</div>

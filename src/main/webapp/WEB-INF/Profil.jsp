@@ -23,30 +23,27 @@
                         <!---------INPUT PSEUDO ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Pseudo</i> ${pseudo}
+                                <i>Pseudo : </i> ${utilisateur.pseudo}
 								
                             </div>
                         </div>
                         <!---------INPUT NOM ------>
                         <div class="form-group">
                             <div  class="input-group"> 
-                                <i>Nom</i> ${nom}
-							
+                                <i>Nom : </i> <span>${utilisateur.nom}</span>
                             </div>
                         </div>
                         <!---------INPUT PRENOM ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Prénom</i>  ${prenom}
+                                <i>Prénom : </i>  ${utilisateur.prenom}
                               
-                             
-
                             </div>
                         </div>
                         <!---------INPUT EMAIL ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Email</i> ${mail}
+                                <i>Email : </i> ${utilisateur.email}
                                
 
                             </div>
@@ -54,14 +51,14 @@
                         <!---------INPUT TELEPHONE ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Téléphone</i> ${telephone}
+                                <i>Téléphone : </i> ${utilisateur.telephone}
                                 
                             </div>
                         </div>
                         <!---------INPUT RUE ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Rue</i> ${rue}
+                                <i>Rue : </i> ${utilisateur.rue}
                                 
 
                             </div>
@@ -69,14 +66,14 @@
                         <!---------INPUT CODE POSTAL ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Code postal</i> ${code_postal}
+                                <i>Code postal : </i> ${utilisateur.codePostal}
                               
                             </div>
                         </div>
                         <!---------INPUT VILLE ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Ville</i> ${ville}
+                                <i>Ville : </i> ${utilisateur.ville}
                                 
 
                             </div>
