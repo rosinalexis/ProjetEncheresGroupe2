@@ -17,7 +17,7 @@
                 </ul> -->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Enchères</a></li>
-                    <li><a href="#" >Vendre un article</a></li>
+                    <li><a href="NouvelleVente" >Vendre un article</a></li>
                     <li><a href="MonProfil">Mon Profil</a></li>
                     <li><a href='#'><span>Déconnexion</span></a></li>
                     <!-- tester si l'utilisateur est connecté -->
