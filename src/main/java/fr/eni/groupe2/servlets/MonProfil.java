@@ -16,35 +16,45 @@ import fr.eni.groupe2.messages.DALException;
  * @author groupe 2
  * @projet ENI ENCHERES 2021
  * 
- * @description Servlet implementation class Profil
- * Permet l'affiche du profil d'un utilisateur via ses données de sessions.
+ * @description Servlet implementation class Profil Permet l'affiche du profil
+ *              d'un utilisateur via ses données de sessions.
  * 
  */
 @WebServlet("/MonProfil")
 public class MonProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Utilisateur utilisateurConnecter = new Utilisateur(); 
-		String errorMessage ="";
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Utilisateur utilisateurConnecter = new Utilisateur();
+		String errorMessage = "";
+
+		// Récupération de la session
 		HttpSession session = request.getSession();
-		utilisateurConnecter =(Utilisateur) session.getAttribute("utilisateurConnecter");
+
+		if (session.getAttribute("utilisateurConnecter") == null) {
+			// si pas d'objet utilisateur dans la session alors
+			// redirection vers la page d'acceuil
+			response.sendRedirect(request.getContextPath()+"/Accueil");
+		} else {
 			
-		try {
-			request.setAttribute("utilisateur", UtilisateurManager.rechercherUtilisateur(utilisateurConnecter.getNoUtilisateur()));
-		} catch (DALException e) {
-			
-			errorMessage = e.getMessage();
-			request.setAttribute("errorMessage", errorMessage);
-		}
-		request.getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request, response);
+			utilisateurConnecter = (Utilisateur) session.getAttribute("utilisateurConnecter");
+			try {
+				request.setAttribute("utilisateur",
+						UtilisateurManager.rechercherUtilisateur(utilisateurConnecter.getNoUtilisateur()));
+			} catch (DALException e) {
+
+				errorMessage = e.getMessage();
+				request.setAttribute("errorMessage", errorMessage);
+			}
+			request.getRequestDispatcher("/WEB-INF/Profil.jsp").forward(request, response);
+		}		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 
