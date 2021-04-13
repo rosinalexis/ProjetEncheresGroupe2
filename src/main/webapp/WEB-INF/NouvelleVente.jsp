@@ -18,34 +18,28 @@
             <!------------------------------------------------- todo_section --------------------------------------------->
 
             <div class="col-md-4 col-sm-12">
-                <div class="insertintoimage" style="   border: solid;
-                                                            width: 84%;
-                                                            height: 26%;
-                                                            margin-left: 8%;
-                                                            margin-top: 18%;">
+                <div class="insertintoimage" style=" width: 84%;height: 26%; margin-left: 8%; margin-top: 18%;">
+                ${afficheIMG}
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                     <!----- ARTICLE ----->
                     <div class="input-group" style="margin-top: 1%;">
-                        <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Article :</i></span>
-                        <input type="text" class="form-control" name="article" required style="margin-left:12%; width: 88%;" />
+                        <span class="input-group-addon" id="inputVente"  ><i>Article :</i></span>
+                        <input type="text" class="form-control" name="article" required />
                     </div>
                     <!----- DESCRIPTION ----->
                     <div class="input-group" style="margin-top: 1%;">
-                        <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Déscription :</i></span>
-                        <textarea style="margin-left:6%; width: 94%;" class="form-control" id="exampleTextarea" rows="3">
+                        <span class="input-group-addon" id="inputVente" ><i>Déscription :</i></span>
+                        <textarea  class="form-control" id="exampleTextarea" rows="5">
                             </textarea>
                     </div>
                     <!----- CATEGORIE ----->
                     <div class="input-group mb-3" style="margin-top: 1%;">
                         <div class="input-group">
-                            <span class="input-group-addon" id="inputVente"  style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;">Catégorie</span>
-                            <select class="form-control" id="inputGroupSelect01" style="margin-left:33%; width: 316%;">
+                            <span class="input-group-addon" id="inputVente" >Catégorie</span>
+                            <select class="form-control" id="inputGroupSelect01" style="padding: 3px 12px;" >
                                 <option selected>Choose...</option>
                                 <option value="1">Informatique</option>
                                 <option value="2">Ameublement</option>
@@ -56,30 +50,26 @@
                     </div>
                     <!----- PHOTO DE L ARTICLE ----->
                     <div class="input-group" style="margin-top: 1%;">
-                        <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>photo de l'article :</i></span>
+                        <span class="input-group-addon" id="inputVente" ><i>photo de l'article :</i></span>
                         <form name="myForm" action="">
-                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onclick="loadPic()">
+                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" >
                         </form>
                         <div id="imgContainer"></div>
                     </div>
                     <!----- MISE A PRIX ----->
                     <div class="input-group" style="margin-top: 1%;">
-                        <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Mise à prix :</i></span>
-                        <input type="number" id="tentacles" name="tentacles" min="10" max="1000" class="form-control" name="MiseAPRIX" style="margin-left:7%; width: 93%;" required />
+                        <span class="input-group-addon" id="inputVente" ><i>Mise à prix :</i></span>
+                        <input type="number" id="tentacles" name="tentacles" min="10" max="1000" class="form-control" name="MiseAPRIX" required />
                     </div>
                     <!----- DEBUT ENCHERE ----->
                     <div class="input-group" style="margin-top: 1%;">
-                        <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Début de l'enchère :</i></span>
-                        <input class="form-control" type="date" value="2020-09-14" id="example-date-input" style="margin-left:4%; width: 96%;">
+                        <span class="input-group-addon" id="inputVente" ><i>Début de l'enchère :</i></span>
+                        <input class="form-control" type="date" value="2020-09-14" id="example-date-input" >
                     </div>
                     <!----- FIN ENCHERE ----->
                     <div class="input-group" style="margin-top: 1%;">
-                        <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Fin de l'enchère :</i></span>
-                        <input class="form-control" type="date" value="2020-09-14" id="example-date-input" style="margin-left: 8%;width: 92%;">
+                        <span class="input-group-addon" id="inputVente" ><i>Fin de l'enchère :</i></span>
+                        <input class="form-control" type="date" value="2020-09-14" id="example-date-input" >
                     </div>
                     <!------div retrait ------>
                     <div style="    margin-top:5%;      
@@ -94,21 +84,18 @@
                                     text-align: center;">Retrait</P>
                         <!----- RUE ----->
                         <div  class="input-group" style="margin-top: 1%;">
-                            <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Rue :</i></span>
-                            <input type="text" style="margin-left: 10%; width: 88%;" class="form-control" name="article" required />
+                            <span class="input-group-addon" id="inputVente" style=" border: 0px solid #ccc;"><i>Rue :</i></span>
+                            <input type="text" class="form-control" name="article" required />
                         </div>
                         <!----- CODE POSTAL ----->
                         <div class="input-group" style="margin-top: 1%;">
-                            <span class="input-group-addon" id="inputVente" style="     border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Code postal : </i></span>
-                            <input type="text" style="width: 98%;" class="form-control" name="article" required />
+                            <span class="input-group-addon" id="inputVente" style="border: 0px solid #ccc;"><i>Code postal : </i></span>
+                            <input type="text"  class="form-control" name="article" required />
                         </div>
                         <!----- VILLE ----->
-                        <div class="input-group" style="padding: 2%;">
-                            <span class="input-group-addon" style=" border: 0px solid #ccc;
-                                                                        background-color:white !important;"><i>Ville :</i></span>
-                            <input type="text" class="form-control" style="margin-left: 8%; width: 92%;" name="article" required />
+                        <div class="input-group" style="margin-top:1%; margin-bottom:2%">
+                            <span class="input-group-addon"><i>Ville :</i></span>
+                            <input type="text" class="form-control"  name="article" required />
                         </div>
                     </div>
                     <!---------DIV BOUTON------->
