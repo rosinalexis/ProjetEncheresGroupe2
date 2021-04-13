@@ -18,8 +18,7 @@ public class UtilisateurManager {
 
 	// mes attibues
 	private static  DAO<Utilisateur> utilisateurDAO= DAOFactory.getUtilisateurDAO();
-	
-	// 
+	 
 	/**
 	 * ajouterUtilisateur vérifie l'existance  et ajoute un utilisateur à la base.
 	 * @param utilisateur

@@ -85,9 +85,7 @@ public class Inscription extends HttpServlet {
 		else {
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("nom", utilisateur.getNom());
-			session.setAttribute("prenom", utilisateur.getPrenom());
-			session.setAttribute("pseudo", utilisateur.getPrenom()); 
+			session.setAttribute("utilisateurConnecter", utilisateur);
 			
 			// revoir la redirection vers /WEB-INF/Home.jsp mais pour les test je garde 
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
