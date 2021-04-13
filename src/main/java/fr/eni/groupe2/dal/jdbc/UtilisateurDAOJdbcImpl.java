@@ -78,60 +78,24 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
 			if (rs.next()) {
 				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
-
-				rs.getString("pseudo");
-				if (rs.wasNull())
-					utilisateur.setPseudo("inconnu");
-				else
-					utilisateur.setPseudo(rs.getString("pseudo"));
-
-				rs.getString("nom");
-				if (rs.wasNull())
-					utilisateur.setNom("inconnu");
-				else
-					utilisateur.setNom(rs.getString("nom"));
-
-				rs.getString("prenom");
-				if (rs.wasNull())
-					utilisateur.setPrenom("inconnu");
-				else
-					utilisateur.setPrenom(rs.getString("prenom"));
-
-				rs.getString("email");
-				if (rs.wasNull())
-					utilisateur.setEmail("inconnu");
-				else
-					utilisateur.setEmail(rs.getString("email"));
+				utilisateur.setPseudo(rs.getString("pseudo"));
+				utilisateur.setNom(rs.getString("nom"));
+				utilisateur.setPrenom(rs.getString("prenom"));
+				utilisateur.setEmail(rs.getString("email"));
 
 				rs.getString("telephone");
 				if (rs.wasNull())
 					utilisateur.setTelephone("inconnu");
 				else
 					utilisateur.setTelephone(rs.getString("telephone"));
+				
+				utilisateur.setRue(rs.getString("rue"));
+				
+				utilisateur.setCodePostal(rs.getString("code_postal"));
+				
+				utilisateur.setVille(rs.getString("ville"));
 
-				rs.getString("rue");
-				if (rs.wasNull())
-					utilisateur.setRue("inconnu");
-				else
-					utilisateur.setRue(rs.getString("rue"));
-
-				rs.getString("code_postal");
-				if (rs.wasNull())
-					utilisateur.setCodePostal("inconnu");
-				else
-					utilisateur.setCodePostal(rs.getString("code_postal"));
-
-				rs.getString("ville");
-				if (rs.wasNull())
-					utilisateur.setVille("inconnu");
-				else
-					utilisateur.setVille(rs.getString("ville"));
-
-				rs.getString("mot_de_passe");
-				if (rs.wasNull())
-					utilisateur.setMotDePasse("inconnu");
-				else
-					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 
 				utilisateur.setCredit(rs.getInt("credit"));
 
@@ -170,29 +134,10 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 				try {
 					utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
 
-					rs.getString("pseudo");
-					if (rs.wasNull())
-						utilisateur.setPseudo("inconnu");
-					else
-						utilisateur.setPseudo(rs.getString("pseudo"));
-
-					rs.getString("nom");
-					if (rs.wasNull())
-						utilisateur.setNom("inconnu");
-					else
-						utilisateur.setNom(rs.getString("nom"));
-
-					rs.getString("prenom");
-					if (rs.wasNull())
-						utilisateur.setPrenom("inconnu");
-					else
-						utilisateur.setPrenom(rs.getString("prenom"));
-
-					rs.getString("email");
-					if (rs.wasNull())
-						utilisateur.setEmail("inconnu");
-					else
-						utilisateur.setEmail(rs.getString("email"));
+					utilisateur.setPseudo(rs.getString("pseudo"));
+					utilisateur.setNom(rs.getString("nom"));
+					utilisateur.setPrenom(rs.getString("prenom"));
+					utilisateur.setEmail(rs.getString("email"));
 
 					rs.getString("telephone");
 					if (rs.wasNull())
@@ -200,33 +145,13 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 					else
 						utilisateur.setTelephone(rs.getString("telephone"));
 
-					rs.getString("rue");
-					if (rs.wasNull())
-						utilisateur.setRue("inconnu");
-					else
-						utilisateur.setRue(rs.getString("rue"));
-
-					rs.getString("code_postal");
-					if (rs.wasNull())
-						utilisateur.setCodePostal("inconnu");
-					else
-						utilisateur.setCodePostal(rs.getString("code_postal"));
-
-					rs.getString("ville");
-					if (rs.wasNull())
-						utilisateur.setVille("inconnu");
-					else
-						utilisateur.setVille(rs.getString("ville"));
-
-					rs.getString("mot_de_passe");
-					if (rs.wasNull())
-						utilisateur.setMotDePasse("inconnu");
-					else
-						utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
-
+					utilisateur.setRue(rs.getString("rue"));
+					utilisateur.setCodePostal(rs.getString("code_postal"));
+					utilisateur.setVille(rs.getString("ville"));
+					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 					utilisateur.setCredit(rs.getInt("credit"));
-
 					utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+					
 				} catch (BusinessException e) {
 
 					e.printStackTrace();
