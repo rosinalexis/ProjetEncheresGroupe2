@@ -58,9 +58,8 @@
 							</div>
 						</div>
 						<!---------MOT DE PASSE OUBLIE------>
-						<button type="button" class="btn btn-success btn-block"
-							onclick="window.location.href='registre.html';">créer un
-							compte</button>
+						<a href="Inscription"><button type="button" class="btn btn-success btn-block">créer un
+							compte</button></a>
 						<!---------BOUTON CREER COMPTE ------>
 						<div class="forgot"></div>
 					</fieldset>
