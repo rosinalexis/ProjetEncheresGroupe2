@@ -92,7 +92,7 @@ public class Utilisateur implements Serializable {
 
 	// Getters et Setters
 	
-	
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}

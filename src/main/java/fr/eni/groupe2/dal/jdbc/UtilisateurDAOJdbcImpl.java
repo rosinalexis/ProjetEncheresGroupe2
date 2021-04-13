@@ -1,7 +1,6 @@
 package fr.eni.groupe2.dal.jdbc;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +19,7 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 	private final static String LISTER = "SELECT * FROM UTILISATEURS;";
 	private final static String INSERER = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur ) values (?,?,?,?,?,?,?,?,?,?,?);";
 	private final static String RECHERCHER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur =?";
+	private final static String MODIFIER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur = ?";
 
 	@Override
 	public void insert(Utilisateur u) throws DALException {
@@ -54,10 +54,32 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 		}
 	}
 
-	@Override
-	public void update(Utilisateur u) {
-		// TODO Auto-generated method stub
-
+	public Utilisateur update(Utilisateur u) throws DALException{
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		cnx = DBConnexion.seConnecter();
+		
+		try {
+			pstmt = cnx.prepareStatement(MODIFIER);
+			pstmt.setString(1, u.getPseudo());
+	        pstmt.setString(2, u.getNom());
+	        pstmt.setString(3, u.getPrenom());
+	        pstmt.setString(4, u.getEmail());
+	        pstmt.setString(5, u.getTelephone());
+	        pstmt.setString(6, u.getRue());
+	        pstmt.setString(7, u.getCodePostal());
+	        pstmt.setString(8, u.getVille());
+	        pstmt.setString(9, u.getMotDePasse());
+	        pstmt.setInt(10, u.getNoUtilisateur());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new DALException("Probleme lors de la modification d'un utilisateur -"+e.getMessage());
+		} finally {
+			DBConnexion.seDeconnecter(cnx, pstmt);
+		}
+		return u;
 	}
 
 	@Override

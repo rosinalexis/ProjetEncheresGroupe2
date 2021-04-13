@@ -5,6 +5,7 @@ import java.util.List;
 import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.dal.DAO;
 import fr.eni.groupe2.dal.DAOFactory;
+import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 /**
@@ -67,6 +68,22 @@ public class UtilisateurManager {
 			return utilisateurDAO.selectByID(id); 
 	}
 
+
+	public Utilisateur modificationUtilisateur(int noUtilisateur, String pseudo, String nom, String prenom,
+			String email, String telephone, String rue, String codePostal, String ville, String motDePasse,
+			String motDePasseBis, int credit, boolean administrateur) {
+		Utilisateur utilisateur = null;
+		try {
+			utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal,
+					ville, motDePasse, credit, administrateur);
+			DAOFactory.getUtilisateurDAO().update(utilisateur);
+			return utilisateur;
+		} catch (BusinessException | DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return utilisateur;
+	}
 }
 
 

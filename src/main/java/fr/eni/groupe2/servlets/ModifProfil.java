@@ -32,27 +32,49 @@ public class ModifProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utilisateur utilisateurConnecter = new Utilisateur(); 
-		String errorMessage ="";
-		
-		HttpSession session = request.getSession(true);
-		utilisateurConnecter =(Utilisateur) session.getAttribute("utilisateurConnecter");
-			
-		try {
-			request.setAttribute("utilisateur", UtilisateurManager.rechercherUtilisateur(utilisateurConnecter.getNoUtilisateur()));
-		} catch (DALException e) {
-			
-			errorMessage = e.getMessage();
-			request.setAttribute("errorMessage", errorMessage);
-		}
-		request.getRequestDispatcher("/WEB-INF/ModifProfil.jsp").forward(request, response);
+        String errorMessage ="";
+        
+        HttpSession session = request.getSession(true);
+        utilisateurConnecter =(Utilisateur) session.getAttribute("utilisateurConnecter");
+            
+        try {
+            request.setAttribute("utilisateur", UtilisateurManager.rechercherUtilisateur(utilisateurConnecter.getNoUtilisateur()));
+        } catch (DALException e) {
+            
+            errorMessage = e.getMessage();
+            request.setAttribute("errorMessage", errorMessage);
+        }
+        request.getRequestDispatcher("/WEB-INF/ModifProfil.jsp").forward(request, response);
 	}
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Utilisateur utilisateurRecupNum = new Utilisateur();
+		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecter");
+		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
+		System.out.println(noUtilisateur);
+		
+		String pseudo = request.getParameter("pseudo");
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		String email = request.getParameter("email");
+		String telephone = request.getParameter("telephone");
+		String rue = request.getParameter("rue");
+		String codePostal = request.getParameter("codePostal");
+		String ville = request.getParameter("ville");
+		String motDePasse = request.getParameter("motDePasse");
+		String confirmation = request.getParameter("confirmation");
+		
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur = utilisateurManager.modificationUtilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, confirmation, 0, false);
+		
+		request.getSession().setAttribute("utilisateurConnecter", utilisateur);
+		System.out.println(utilisateur);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/ModifProfil.jsp").forward(request, response);
+		
 	}
 
 }
