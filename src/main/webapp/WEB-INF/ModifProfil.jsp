@@ -14,7 +14,7 @@
 	<div class="col-md-10 col-md-offset-1" id="login">
 		<section id="inner-wrapper" class="login">
 			<div style="text-align: center">
-				<h2>Créer un compte</h2>
+				<h2>Mon Profil</h2>
 			</div>
 			<br>
 

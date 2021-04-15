@@ -31,14 +31,20 @@ public class Utilisateur implements Serializable {
 	private String motDePasse;
 	private int credit;
 	private boolean administrateur;
+	
+	//autre 
+	
 
-	// Constructeur vide
+	/**
+	 * le constructeur par default
+	 */
 	public Utilisateur() {
 	}
 
-	// Constructeur avec paramètres
+	// Les constructeurs
 	/**
-	 * Le constructeur pour les servlets
+	 * Le constructeur surchargé permettant d'instancier un object de type Utilisateur en hydratant les attribus ci-dessous   
+	 * 
 	 * @param pseudo
 	 * @param nom
 	 * @param prenom
@@ -48,7 +54,7 @@ public class Utilisateur implements Serializable {
 	 * @param codePostal
 	 * @param ville
 	 * @param motDePasse
-	 * @throws BusinessException
+	 * @throws BusinessException : propagation d'une exception de type Metier.
 	 */
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse) throws BusinessException {
 		setPseudo(pseudo);
@@ -65,7 +71,7 @@ public class Utilisateur implements Serializable {
 	}
 	
 	/**
-	 * le constructeur pour les requêtes sql 
+	 * Le constructeur surchargé permettant d'instancier un object de type Utilisateur en hydratant les attribus ci-dessous
 	 * @param noUtilisateur
 	 * @param pseudo
 	 * @param nom
@@ -78,7 +84,7 @@ public class Utilisateur implements Serializable {
 	 * @param motDePasse
 	 * @param credit
 	 * @param administrateur
-	 * @throws BusinessException
+	 * @throws BusinessException : propagation d'une exception de type Metier.
 	 */
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, boolean administrateur) throws BusinessException {
@@ -91,22 +97,23 @@ public class Utilisateur implements Serializable {
 	
 
 	// Getters et Setters
-	
-
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
 
 	public void setNoUtilisateur(int noUtilisateur) {
-
 		this.noUtilisateur = noUtilisateur;
 	}
 
 	public String getPseudo() {
-
 		return pseudo;
 	}
 
+	/**
+	 * Méthode  de type mutateur permettant d'hydrater l'attribut pseudo d'un utilisateur. 
+	 * @param pseudo : le pseudo de l'utilisateur de type string.
+	 * @throws BusinessException : retroune une exception de type metier. 
+	 */
 	public void setPseudo(String pseudo) throws BusinessException {
 
 		if (pseudo.isEmpty()) {
@@ -124,7 +131,12 @@ public class Utilisateur implements Serializable {
 	public String getNom() {
 		return nom;
 	}
-
+	
+	/**
+	 *Methode  de type mutateur permettant d'hydrater l'attribut nom d'un utilisateur.
+	 * @param nom : le nom de l'utilisateur  est de type string. 
+	 * @throws BusinessException : retourne une exception de type metier. 
+	 */
 	public void setNom(String nom) throws BusinessException {
 
 		if (nom.isEmpty()) {
@@ -142,6 +154,11 @@ public class Utilisateur implements Serializable {
 		return prenom;
 	}
 
+	/**
+	 * Methode  de type mutateur permettant d'hydrater l'attribut prénom d'un utilisateur. 
+	 * @param prenom : le prenom de l'utilisateur est de type string. 
+	 * @throws BusinessException : retourne une exception de type metier.
+	 */
 	public void setPrenom(String prenom) throws BusinessException {
 		
 		if (prenom.isEmpty()) {
@@ -161,6 +178,11 @@ public class Utilisateur implements Serializable {
 		return email;
 	}
 
+	/**
+	 * Methode  de type mutateur permettant d'hydrater l'attribut email de l'utilisateur. 
+	 * @param email : l'email de l'utilisateur est de type string. 
+	 * @throws BusinessException : retourne une exception de type metier. 
+	 */
 	public void setEmail(String email) throws BusinessException {
 
 		if (email.isEmpty()) {
@@ -180,6 +202,11 @@ public class Utilisateur implements Serializable {
 		return telephone;
 	}
 
+	/**
+	 * Methode  de type mutateur permettant d'hydrater l'attribut téléphone de l'utilisateur. 
+	 * @param telephone : télépone est de type string. 
+	 * @throws BusinessException : retourne une exception de type businessObject.
+	 */
 	public void setTelephone(String telephone) throws BusinessException {
 
 		if (telephone.isEmpty()) {
@@ -197,7 +224,12 @@ public class Utilisateur implements Serializable {
 	public String getRue() {
 		return rue;
 	}
-
+	
+	/**
+	 * Methode  de type mutateur permettant d'hydrater l'attribut rue d'un utilisateur. 
+	 * @param rue : la rue est de type string. 
+	 * @throws BusinessException : retourne une exception de type metier.
+	 */
 	public void setRue(String rue) throws BusinessException {
 
 		if (rue.isEmpty()) {
@@ -216,6 +248,11 @@ public class Utilisateur implements Serializable {
 		return codePostal;
 	}
 
+	/**
+	 * Methode  de type mutateur permettant d'hydrater l'attribut codePostal d'un utilisateur.
+	 * @param codePostal : le code postal est de type string. 
+	 * @throws BusinessException : retourn une exception de type metier. 
+	 */
 	public void setCodePostal(String codePostal) throws BusinessException {
 		if (codePostal.isEmpty()) {
 			throw new BusinessException("le code postal est vide !");
@@ -233,6 +270,11 @@ public class Utilisateur implements Serializable {
 		return ville;
 	}
 
+	/**
+	 * Methode  de type mutateur permettant d'hydrater l'attribut ville d'un utilisateur. 
+	 * @param ville : la ville est d etype string. 
+	 * @throws BusinessException : retourn une expcetion de type metier.
+	 */
 	public void setVille(String ville) throws BusinessException {
 		if (ville.isEmpty()) {
 			
@@ -252,6 +294,11 @@ public class Utilisateur implements Serializable {
 		return motDePasse;
 	}
 
+	/**
+	 * Methode  de type mutateur permettant d'hydrater l'attribut mot de passe d'un utilisateur. 
+	 * @param motDePasse : le mot de passe est de type string. 
+	 * @throws BusinessException : retourn une exception de type metier. 
+	 */
 	public void setMotDePasse(String motDePasse) throws BusinessException {
 		if (motDePasse.isEmpty()) {
 			throw new BusinessException("le mot de passe est vide !");
@@ -265,8 +312,11 @@ public class Utilisateur implements Serializable {
 		return credit;
 	}
 
+	/**
+	 * Methode de type mutateur permettant d'hydrater l'attribut crédit d'un utilisateur.
+	 * @param credit : le crédit de l'utilisateur.
+	 */
 	public void setCredit(int credit) {
-
 		this.credit = credit;
 	}
 
@@ -274,6 +324,10 @@ public class Utilisateur implements Serializable {
 		return administrateur;
 	}
 
+	/**
+	 * Methode de type mutateur permettant d'hydrater l'attribut administrateur d'un utilisateur
+	 * @param administrateur
+	 */
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}

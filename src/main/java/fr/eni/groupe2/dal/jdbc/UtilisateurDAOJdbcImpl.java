@@ -13,7 +13,6 @@ import fr.eni.groupe2.dal.DAO;
 import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
-
 public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
 	private final static String LISTER = "SELECT * FROM UTILISATEURS;";
@@ -25,9 +24,9 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 	public void insert(Utilisateur u) throws DALException {
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
-	
-			cnx = DBConnexion.seConnecter();
-		
+
+		cnx = DBConnexion.seConnecter();
+
 		try {
 			pstmt = cnx.prepareStatement(INSERER);
 			pstmt.setString(1, u.getPseudo());
@@ -46,36 +45,36 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
 		} catch (SQLException e) {
 
-			throw new DALException("Probleme lors de l'insertion d'un utilisateur -"+e.getMessage());
+			throw new DALException("Probleme lors de l'insertion d'un utilisateur -" + e.getMessage());
 
 		} finally {
 
-				DBConnexion.seDeconnecter(cnx, pstmt);
+			DBConnexion.seDeconnecter(cnx, pstmt);
 		}
 	}
 
-	public Utilisateur update(Utilisateur u) throws DALException{
+	public Utilisateur update(Utilisateur u) throws DALException {
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
 		cnx = DBConnexion.seConnecter();
-		
+
 		try {
 			pstmt = cnx.prepareStatement(MODIFIER);
 			pstmt.setString(1, u.getPseudo());
-	        pstmt.setString(2, u.getNom());
-	        pstmt.setString(3, u.getPrenom());
-	        pstmt.setString(4, u.getEmail());
-	        pstmt.setString(5, u.getTelephone());
-	        pstmt.setString(6, u.getRue());
-	        pstmt.setString(7, u.getCodePostal());
-	        pstmt.setString(8, u.getVille());
-	        pstmt.setString(9, u.getMotDePasse());
-	        pstmt.setInt(10, u.getNoUtilisateur());
-			
+			pstmt.setString(2, u.getNom());
+			pstmt.setString(3, u.getPrenom());
+			pstmt.setString(4, u.getEmail());
+			pstmt.setString(5, u.getTelephone());
+			pstmt.setString(6, u.getRue());
+			pstmt.setString(7, u.getCodePostal());
+			pstmt.setString(8, u.getVille());
+			pstmt.setString(9, u.getMotDePasse());
+			pstmt.setInt(10, u.getNoUtilisateur());
+
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
-			throw new DALException("Probleme lors de la modification d'un utilisateur -"+e.getMessage());
+			throw new DALException("Probleme lors de la modification d'un utilisateur -" + e.getMessage());
 		} finally {
 			DBConnexion.seDeconnecter(cnx, pstmt);
 		}
@@ -90,8 +89,7 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 		ResultSet rs = null;
 		Utilisateur utilisateur = new Utilisateur();
 
-		
-			cnx = DBConnexion.seConnecter();
+		cnx = DBConnexion.seConnecter();
 		try {
 			pstmt = cnx.prepareStatement(RECHERCHER);
 			pstmt.setInt(1, noUtilisateur);
@@ -110,11 +108,11 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 					utilisateur.setTelephone("inconnu");
 				else
 					utilisateur.setTelephone(rs.getString("telephone"));
-				
+
 				utilisateur.setRue(rs.getString("rue"));
-				
+
 				utilisateur.setCodePostal(rs.getString("code_postal"));
-				
+
 				utilisateur.setVille(rs.getString("ville"));
 
 				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
@@ -124,10 +122,10 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			}
 		} catch (SQLException | BusinessException e) {
-			throw new DALException("Probleme lors de la rechercher d'un utilisateur -"+e.getMessage());
-			
+			throw new DALException("Probleme lors de la rechercher d'un utilisateur -" + e.getMessage());
+
 		} finally {
-				DBConnexion.seDeconnecter(cnx, pstmt);
+			DBConnexion.seDeconnecter(cnx, pstmt);
 		}
 
 		return utilisateur;
@@ -143,9 +141,7 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
 		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
 
-	
-			cnx = DBConnexion.seConnecter();
-		
+		cnx = DBConnexion.seConnecter();
 
 		try {
 			stmt = cnx.createStatement();
@@ -173,7 +169,7 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 					utilisateur.setCredit(rs.getInt("credit"));
 					utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
-					
+
 				} catch (BusinessException e) {
 
 					e.printStackTrace();
@@ -183,9 +179,9 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 			}
 		} catch (SQLException e) {
 
-			throw new DALException("Problème lors de la tentative de listage des Utilisateurs -"+e.getMessage());
+			throw new DALException("Problème lors de la tentative de listage des Utilisateurs -" + e.getMessage());
 		} finally {
-				DBConnexion.seDeconnecter(cnx, stmt);
+			DBConnexion.seDeconnecter(cnx, stmt);
 		}
 		return listeUtilisateurs;
 	}

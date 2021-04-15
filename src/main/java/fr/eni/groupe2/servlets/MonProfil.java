@@ -20,6 +20,7 @@ import fr.eni.groupe2.messages.DALException;
  *              d'un utilisateur via ses données de sessions.
  * 
  */
+
 @WebServlet("/MonProfil")
 public class MonProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,7 +56,6 @@ public class MonProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request, response);
 	}
 
 }

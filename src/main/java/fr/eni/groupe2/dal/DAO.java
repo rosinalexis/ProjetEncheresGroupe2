@@ -15,8 +15,8 @@ import fr.eni.groupe2.messages.DALException;
 public interface DAO <T> {
 
 	public void insert(T u) throws DALException; 
-	public Utilisateur update (T u) throws DALException; 
-	public T selectByID(int noUtilisateur) throws DALException; 
+	public T update (T u) throws DALException; 
+	public T selectByID(int id) throws DALException; 
 	public List<T> selectAll() throws DALException; 
 	public void delete(T u);
 	

@@ -59,7 +59,6 @@ public class UtilisateurManager {
 		return utilisateurDAO.selectAll();	
 	}
 
-
 	/**
 	 * rechercherUtilisateur permet de rechercher un utilisateur en base via son ID.
 	 * @throws DALException
