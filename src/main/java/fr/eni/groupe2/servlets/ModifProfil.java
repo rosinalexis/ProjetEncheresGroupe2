@@ -72,7 +72,7 @@ public class ModifProfil extends HttpServlet {
 		
 		request.getSession().setAttribute("utilisateurConnecter", utilisateur);
 		
-		request.getServletContext().getRequestDispatcher("/WEB-INF/Connexion.jsp").forward(request, response);
+		response.sendRedirect("MonProfil");
 		
 	}
 

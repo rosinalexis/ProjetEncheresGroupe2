@@ -7,11 +7,11 @@
 <html lang="fr">
 <%@ include file="miseEnPage/head.jsp"%>
 
-<body class="bg-light" style="background-color: #333">
+<body class="bg-light" style="background-color: #333; ">
 	<%@ include file="miseEnPage/header.jsp"%>
 
 	<!------------------------------------------------- TITRE --------------------------------------------->
-	<div class="container" style="background-color: white;">
+	<div class="container" style="background-color: white; border-radius: 12px !important;">
 		<div class="col-md-12 col-xs-12" style="text-align: center">
 			<h2 class="titre_index" style="text-align: center">Liste des
 				enchères</h2>

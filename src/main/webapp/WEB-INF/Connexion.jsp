@@ -3,8 +3,12 @@
 <!doctype html>
 <html lang="fr">
 <%@ include file="miseEnPage/head.jsp"%>
+<!-- JavaScript Bundle with Popper -->
+<!-- CSS only -->
+
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/login.css"
 	rel="stylesheet">
+
 <body>
 	<%@ include file="miseEnPage/headercompte.jsp"%>
 	<div class="col-md-4" id="login">
@@ -47,26 +51,29 @@
 						<button type="submit" class="btn btn-success btn-block-connexion"
 							style="float: left">connexion</button>
 						<!---------CHECKBOX ------>
-						<div class="form-check" style="float: right; width: 40%">
+						<div class="form-check" style="float: right; width: 50%; ">
 							<input type="checkbox" class="form-check-input" name="remember"
-								id="exampleCheck1">
+								id="exampleCheck1"> <small>se souvenir de moi</small>
 
-
-							<div class="form-check-label">
-								<a href="mot-de-passe-oublie.php" class="form-check-label"
-									id="pass"> Mot de passe oublié </a>
-							</div>
+						</div>	
+						</fieldset>
+				</form>	
+						<div class="form-check-label">
+						<a href=MdpOublie><button  class="btn btn-primary" style="float:right;margin-top: -5%;margin-bottom: 1%;">Mot de passe oublié</button></a>
 						</div>
 						<!---------MOT DE PASSE OUBLIE------>
-						<a href="Inscription"><button type="button" class="btn btn-success btn-block">créer un
-							compte</button></a>
+						<a href="Inscription"><button type="button" class="btn btn-success btn-block">créer un compte</button></a>
 						<!---------BOUTON CREER COMPTE ------>
 						<div class="forgot"></div>
-					</fieldset>
-				</form>
+				
 
 			</article>
 		</section>
+		
 	</div>
+
+
 </body>
+    <script src="<%=request.getContextPath() %>/dist/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath() %>/dist/bootstrap/js/jquery.js"></script>
 </html>

@@ -1,5 +1,5 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*" %>
 <!doctype html>
 <html lang="fr">
 <%@ include file="miseEnPage/head.jsp"%>
@@ -7,7 +7,10 @@
 	rel="stylesheet">
 <body>
 	<%@ include file="miseEnPage/headerprofile.jsp"%>
-	<div class="container" style="background-color: white;">
+
+	<div><marquee style="color:white"> Bonjour, ${utilisateur.pseudo} bienvenue sur notre site d'enchéres en ligne   </marquee></div>
+
+	<div class="container" style="background-color: white; border-radius: 12px !important;">
 		<div class="col-md-6 col-sm-12">
 			<section class="todo_section">
 				<h4 class="index_text_input">Filtres :</h4>
@@ -28,7 +31,7 @@
 						<option value="info">Informatique</option>
 						<option value="ameu">Ameublement</option>
 						<option value="vet">Vêtement</option>
-						<option value="spetlois">Sport & Loisirs</option>
+						<option value="spetlois">Sport et Loisirs</option>
 					</select>
 				</section>
 			</section>
@@ -36,9 +39,9 @@
 
 		<!---------------------------Bouton recherche -------------------->
 		<div class="col-md-6 col-xs-8 " id="pad_btn" style="padding-top: 30px">
-			<input type="button" value="Rechercher"
-				class="btn btn-secondary btn-lg "
-				onclick="window.location.href='../Acquereur/DetailVente.html';"
+			<input type="submit" value="Rechercher"
+				class="btn btn-success btn-connexion "
+				
 				id="btn_search">
 		</div>
 
@@ -141,7 +144,7 @@
 
     </script>
 	<script
-		src="../style/bootstrap/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+		src="<%=request.getContextPath() %>/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

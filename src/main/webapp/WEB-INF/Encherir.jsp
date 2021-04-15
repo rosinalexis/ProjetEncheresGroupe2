@@ -5,8 +5,8 @@
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/registre.css" rel="stylesheet"> 
 <link href="<%=request.getContextPath() %>/dist/bootstrap/css/style1.css" rel="stylesheet">
 <body class="bg-light" style="background-color: #333;">
-<%@ include file="miseEnPage/headercompte.jsp"%>
-  <div class="container" style="background-color: white;">
+<%@ include file="miseEnPage/headerConnecte.jsp"%>
+  <div class="container" style="background-color: white; border-radius: 12px !important;">
         <div class="col-md-12 col-xs-12" style="text-align: center">
             <h2 class="titre_index" style="text-align: center">Détaile Vente</h2>
         </div>

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.groupe2.bll.EnchereManager;
-
-import fr.eni.groupe2.bo.Enchere;
 import fr.eni.groupe2.bo.ListeEnchere;
 import fr.eni.groupe2.messages.DALException;
 

@@ -5,10 +5,9 @@
 <%@ include file="miseEnPage/head.jsp"%>
 
 <link
-	href="<%=request.getContextPath()%>/dist/bootstrap/css/registre.css"
-	rel="stylesheet">
+	href="<%=request.getContextPath()%>/dist/bootstrap/css/registre.css" rel="stylesheet">
 <body>
-	<%@ include file="miseEnPage/headercompte.jsp"%>
+	<%@ include file="miseEnPage/headerConnecte.jsp"%>
 
     <!------ Include the above in your HEAD tag ---------->
 
@@ -23,27 +22,27 @@
                         <!---------INPUT PSEUDO ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Pseudo : </i> ${utilisateur.pseudo}
+                                <i>Pseudo : </i> <strong style="color:blue">${utilisateur.pseudo}</strong>
 								
                             </div>
                         </div>
                         <!---------INPUT NOM ------>
                         <div class="form-group">
                             <div  class="input-group"> 
-                                <i>Nom : </i> <span>${utilisateur.nom}</span>
+                                <i>Nom : </i> <strong style="color:blue">${utilisateur.nom}</strong>
                             </div>
                         </div>
                         <!---------INPUT PRENOM ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Prénom : </i>  ${utilisateur.prenom}
+                                <i>Prénom : </i> <strong style="color:blue"> ${utilisateur.prenom}</strong>
                               
                             </div>
                         </div>
                         <!---------INPUT EMAIL ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Email : </i> ${utilisateur.email}
+                                <i>Email : </i><strong style="color:blue"> ${utilisateur.email}</strong>
                                
 
                             </div>
@@ -51,14 +50,14 @@
                         <!---------INPUT TELEPHONE ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Téléphone : </i> ${utilisateur.telephone}
+                                <i>Téléphone : </i> <strong style="color:blue">${utilisateur.telephone}</strong>
                                 
                             </div>
                         </div>
                         <!---------INPUT RUE ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Rue : </i> ${utilisateur.rue}
+                                <i>Rue : </i> <strong style="color:blue">${utilisateur.rue}</strong>
                                 
 
                             </div>
@@ -66,14 +65,14 @@
                         <!---------INPUT CODE POSTAL ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Code postal : </i> ${utilisateur.codePostal}
+                                <i>Code postal : </i> <strong style="color:blue">${utilisateur.codePostal}</strong>
                               
                             </div>
                         </div>
                         <!---------INPUT VILLE ------>
                         <div class="form-group">
                             <div  class="input-group">
-                                <i>Ville : </i> ${utilisateur.ville}
+                                <i>Ville : </i> <strong style="color:blue">${utilisateur.ville}</strong>
                                 
 
                             </div>

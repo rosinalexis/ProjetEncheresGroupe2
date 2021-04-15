@@ -2,7 +2,6 @@ package fr.eni.groupe2.dal;
 
 import java.util.List;
 
-import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.messages.DALException;
 /**
  * 

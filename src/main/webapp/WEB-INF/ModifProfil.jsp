@@ -8,7 +8,7 @@
 	href="<%=request.getContextPath()%>/dist/bootstrap/css/registre.css"
 	rel="stylesheet">
 <body>
-	<%@ include file="miseEnPage/headercompte.jsp"%>
+	<%@ include file="miseEnPage/headerConnecte.jsp"%>
 
 
 	<div class="col-md-10 col-md-offset-1" id="login">

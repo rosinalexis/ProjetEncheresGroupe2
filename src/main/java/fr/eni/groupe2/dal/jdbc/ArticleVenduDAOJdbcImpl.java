@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.eni.groupe2.bo.ArticleVendu;
-import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.dal.DAO;
-import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 public class ArticleVenduDAOJdbcImpl implements DAO<ArticleVendu>{
