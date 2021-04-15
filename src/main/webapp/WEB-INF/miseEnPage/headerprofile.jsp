@@ -16,6 +16,7 @@
                     <li><a href="#">Page 2</a></li>
                 </ul> -->
                 <ul class="nav navbar-nav navbar-right">
+                	<li><a href="ResultatEnchere">mes enchères en cours</a></li>
                     <li><a href="Encherir">Enchères</a></li>
                     <li><a href="NouvelleVente" >Vendre un article</a></li>
                     <li><a href="MonProfil">Mon Profil</a></li>
