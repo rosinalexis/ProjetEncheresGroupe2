@@ -1,6 +1,7 @@
 package fr.eni.groupe2.dal.jdbc;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ public class EnchereDAOJdbcImpl implements DAO<Enchere> {
 
 	private final static String LISTER = "SELECT * FROM ENCHERES;";
 	private final static String RECHERCHERSPE ="SELECT ARTICLES_VENDUS.nom_article, ARTICLES_VENDUS.prix_initial, ARTICLES_VENDUS.date_fin_encheres, UTILISATEURS.pseudo FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON ARTICLES_VENDUS.no_utilisateur = UTILISATEURS.no_utilisateur WHERE UTILISATEURS.no_utilisateur =? AND ARTICLES_VENDUS.no_article =?;";
+	private final static String SELECT_BY_NO_ENCHERE = "SELECT MAX(montant_enchere) as montantEnchereMax  FROM ENCHERES WHERE noArticle=?";
 	@Override
 	public void insert(Enchere u) throws DALException {
 		// TODO Auto-generated method stub
@@ -106,6 +108,56 @@ public class EnchereDAOJdbcImpl implements DAO<Enchere> {
 
 		return listeEnchere;
 		
+	}
+
+	public int selectByNoEnchere(int noArticle) throws DALException {
+		Enchere enchere = new Enchere();
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int montantEnchereMax = 0;
+		cnx = DBConnexion.seConnecter();
+		try {
+			pstmt = cnx.prepareStatement(SELECT_BY_NO_ENCHERE);
+			pstmt.setInt(1, noArticle);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				enchere.setMontantEnchere(rs.getInt("montantEnchereMax"));
+			montantEnchereMax = enchere.getMontantEnchere();
+			cnx.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return montantEnchereMax;
+	}
+
+	public int insertEnchere(Enchere enchere) throws DALException {
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		cnx = DBConnexion.seConnecter();
+		try {
+			pstmt = cnx.prepareStatement(
+					"INSERT INTO ENCHERES(noEnchereur, noArticle, dateEnchere, montantEnchere) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, enchere.getNoUtilisateur());
+			pstmt.setInt(2, enchere.getNoArticle());
+			pstmt.setDate(3,(Date) enchere.getDateEnchere());
+			pstmt.setInt(4, enchere.getMontantEnchere());
+			pstmt.executeUpdate();
+			rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				enchere.setNoUtilisateur(rs.getInt(1));
+				return rs.getInt(1);
+			}
+			
+			cnx.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
 	}
 
 }

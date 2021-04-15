@@ -54,7 +54,6 @@ public class ModifProfil extends HttpServlet {
 		Utilisateur utilisateurRecupNum = new Utilisateur();
 		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecter");
 		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
-		System.out.println(noUtilisateur);
 		
 		String pseudo = request.getParameter("pseudo");
 		String nom = request.getParameter("nom");
