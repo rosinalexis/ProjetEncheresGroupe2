@@ -30,7 +30,7 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 	private final static String CONNEXION = "SELECT no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur  "
 											+ "FROM UTILISATEURS WHERE pseudo =? AND mot_de_passe=?;";
 
-	private final static String INSERER = "INSERT INTO UTILISATEURS(no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur )"
+	private final static String INSERER = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur )"
 										+ " VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 	
 	private final static String MODIFIER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?"
