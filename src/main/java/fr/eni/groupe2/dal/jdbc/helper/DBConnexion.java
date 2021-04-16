@@ -1,4 +1,4 @@
-package fr.eni.groupe2.dal.jdbc;
+package fr.eni.groupe2.dal.jdbc.helper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

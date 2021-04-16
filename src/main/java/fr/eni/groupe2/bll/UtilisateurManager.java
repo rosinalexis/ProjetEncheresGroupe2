@@ -25,8 +25,9 @@ public class UtilisateurManager {
 	 * @param utilisateur
 	 * @return
 	 * @throws DALException
+	 * @throws BusinessException 
 	 */
-	public static boolean ajouterUtilisateur(Utilisateur utilisateur) throws DALException  {
+	public static boolean ajouterUtilisateur(Utilisateur utilisateur) throws DALException, BusinessException  {
 		boolean ok  = false ; 
 		
 		List<Utilisateur> utilisateurs  =  new ArrayList<Utilisateur>(); 
@@ -54,20 +55,39 @@ public class UtilisateurManager {
 	/**
 	 * listerUtilisateur permet de rendre la liste de tout les utilisateurs
 	 * @throws DALException
+	 * @throws BusinessException 
 	 */
-	public  static List<Utilisateur> listerUtlisateur () throws DALException{
+	public  static List<Utilisateur> listerUtlisateur () throws DALException, BusinessException{
 		return utilisateurDAO.selectAll();	
 	}
 
 	/**
 	 * rechercherUtilisateur permet de rechercher un utilisateur en base via son ID.
 	 * @throws DALException
+	 * @throws BusinessException 
 	 */
-	public static Utilisateur rechercherUtilisateur(int id) throws DALException {
+	public static Utilisateur rechercherUtilisateur(int id) throws DALException, BusinessException {
 			return utilisateurDAO.selectByID(id); 
 	}
 
 
+	/**
+	 * modificationUtilisateur permet de mettre à jour les données d'un utilisateur.
+	 * @param noUtilisateur
+	 * @param pseudo
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param telephone
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 * @param motDePasse
+	 * @param motDePasseBis
+	 * @param credit
+	 * @param administrateur
+	 * @return
+	 */
 	public Utilisateur modificationUtilisateur(int noUtilisateur, String pseudo, String nom, String prenom,
 			String email, String telephone, String rue, String codePostal, String ville, String motDePasse,
 			String motDePasseBis, int credit, boolean administrateur) {

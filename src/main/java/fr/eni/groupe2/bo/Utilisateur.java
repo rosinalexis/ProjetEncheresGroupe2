@@ -1,11 +1,12 @@
 package fr.eni.groupe2.bo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import fr.eni.groupe2.messages.BusinessException;
 
 /**
- * 
+ * <strong>Classe</strong> metier permettant d'instancier un object de type Utilisateur
  * @author Groupe2
  * @description projet ENCHERES ENI 2021. La Classe Utilisateur permet de
  * renseigner les informations d'un utilisateur.
@@ -13,9 +14,7 @@ import fr.eni.groupe2.messages.BusinessException;
  */
 public class Utilisateur implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	// les attribus d'un utilisateur
@@ -31,19 +30,20 @@ public class Utilisateur implements Serializable {
 	private String motDePasse;
 	private int credit;
 	private boolean administrateur;
+	private List<ArticleVendu> articles; 
 	
 	//autre 
 	
 
 	/**
-	 * le constructeur par default
+	 * le constructeur par default permettant d'instancier un objet vide de type Utilisateur
 	 */
 	public Utilisateur() {
 	}
 
 	// Les constructeurs
 	/**
-	 * Le constructeur surchargé permettant d'instancier un object de type Utilisateur en hydratant les attribus ci-dessous   
+	 * Le constructeur surchargé permettant d'instancier un object de type Utilisateur en hydratant les attributs ci-dessous   
 	 * 
 	 * @param pseudo
 	 * @param nom
@@ -71,7 +71,7 @@ public class Utilisateur implements Serializable {
 	}
 	
 	/**
-	 * Le constructeur surchargé permettant d'instancier un object de type Utilisateur en hydratant les attribus ci-dessous
+	 * Le constructeur surchargé permettant d'instancier un object de type Utilisateur en hydratant les attributs ci-dessous
 	 * @param noUtilisateur
 	 * @param pseudo
 	 * @param nom
@@ -94,6 +94,17 @@ public class Utilisateur implements Serializable {
 		setCredit(credit);
 		setAdministrateur(administrateur);
 	}
+	
+	
+	// la méthode toString pour le débug de l'application
+	@Override
+	public String toString() {
+		return "Utilisateur [noUtilisateur=" + getNoUtilisateur() + ", pseudo=" + getPseudo() + ", nom=" + getNom() + ", prenom="
+				+ getPrenom() + ", email=" + getEmail() + ", telephone=" + getTelephone() + ", rue=" + getRue() + ", codePostal="
+				+ getCodePostal() + ", ville=" + getVille() + ", motDePasse=" + getMotDePasse() + ", credit=" + getCredit()	
+				+ ", administrateur=" + isAdministrateur() + "]";
+	}
+
 	
 
 	// Getters et Setters
@@ -203,7 +214,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	/**
-	 * Methode  de type mutateur permettant d'hydrater l'attribut téléphone de l'utilisateur. 
+	 * <strong>Méthode</strong>   de type mutateur permettant d'hydrater l'attribut téléphone de l'utilisateur. 
 	 * @param telephone : télépone est de type string. 
 	 * @throws BusinessException : retourne une exception de type businessObject.
 	 */
@@ -226,7 +237,7 @@ public class Utilisateur implements Serializable {
 	}
 	
 	/**
-	 * Methode  de type mutateur permettant d'hydrater l'attribut rue d'un utilisateur. 
+	 * <strong>Méthode</strong>   de type mutateur permettant d'hydrater l'attribut rue d'un utilisateur. 
 	 * @param rue : la rue est de type string. 
 	 * @throws BusinessException : retourne une exception de type metier.
 	 */
@@ -249,7 +260,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	/**
-	 * Methode  de type mutateur permettant d'hydrater l'attribut codePostal d'un utilisateur.
+	 * <strong>Méthode</strong>   de type mutateur permettant d'hydrater l'attribut codePostal d'un utilisateur.
 	 * @param codePostal : le code postal est de type string. 
 	 * @throws BusinessException : retourn une exception de type metier. 
 	 */
@@ -271,7 +282,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	/**
-	 * Methode  de type mutateur permettant d'hydrater l'attribut ville d'un utilisateur. 
+	 * <strong>Méthode</strong>   de type mutateur permettant d'hydrater l'attribut ville d'un utilisateur. 
 	 * @param ville : la ville est d etype string. 
 	 * @throws BusinessException : retourn une expcetion de type metier.
 	 */
@@ -295,7 +306,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	/**
-	 * Methode  de type mutateur permettant d'hydrater l'attribut mot de passe d'un utilisateur. 
+	 * <strong>Méthode</strong>  de type mutateur permettant d'hydrater l'attribut mot de passe d'un utilisateur. 
 	 * @param motDePasse : le mot de passe est de type string. 
 	 * @throws BusinessException : retourn une exception de type metier. 
 	 */
@@ -313,7 +324,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	/**
-	 * Methode de type mutateur permettant d'hydrater l'attribut crédit d'un utilisateur.
+	 * <strong>Méthode</strong>  de type mutateur permettant d'hydrater l'attribut crédit d'un utilisateur.
 	 * @param credit : le crédit de l'utilisateur.
 	 */
 	public void setCredit(int credit) {
@@ -325,20 +336,12 @@ public class Utilisateur implements Serializable {
 	}
 
 	/**
-	 * Methode de type mutateur permettant d'hydrater l'attribut administrateur d'un utilisateur
+	 *<strong>Méthode</strong> de type mutateur permettant d'hydrater l'attribut administrateur d'un utilisateur
 	 * @param administrateur
 	 */
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
 
-	// la méthode toString pour le débug de l'application
-	@Override
-	public String toString() {
-		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="
-				+ prenom + ", email=" + email + ", telephone=" + telephone + ", rue=" + rue + ", codePostal="
-				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
-				+ ", administrateur=" + administrateur + "]";
-	}
 
 }

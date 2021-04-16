@@ -3,6 +3,7 @@ package fr.eni.groupe2.bll;
 import fr.eni.groupe2.bo.ArticleVendu;
 import fr.eni.groupe2.dal.DAO;
 import fr.eni.groupe2.dal.DAOFactory;
+import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 /**
@@ -15,7 +16,7 @@ import fr.eni.groupe2.messages.DALException;
 public class ArticleVenduManager {
 	private static  DAO< ArticleVendu> articleVenduDAO= DAOFactory.getArticleVenduDAO();
 	
-	public static ArticleVendu rechercheArticleVendu(int id) throws DALException {
+	public static ArticleVendu rechercheArticleVendu(int id) throws DALException, BusinessException {
 		
 		return articleVenduDAO.selectByID(id);
 	}

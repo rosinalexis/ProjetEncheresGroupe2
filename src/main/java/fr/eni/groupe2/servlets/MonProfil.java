@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.groupe2.bll.UtilisateurManager;
 import fr.eni.groupe2.bo.Utilisateur;
+import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 /**
@@ -44,7 +45,7 @@ public class MonProfil extends HttpServlet {
 			try {
 				request.setAttribute("utilisateur",
 						UtilisateurManager.rechercherUtilisateur(utilisateurConnecter.getNoUtilisateur()));
-			} catch (DALException e) {
+			} catch (DALException | BusinessException e) {
 
 				errorMessage = e.getMessage();
 				request.setAttribute("errorMessage", errorMessage);

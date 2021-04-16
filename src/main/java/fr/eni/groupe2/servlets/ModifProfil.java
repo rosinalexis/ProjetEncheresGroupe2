@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.groupe2.bll.UtilisateurManager;
 import fr.eni.groupe2.bo.Utilisateur;
+import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 /**
@@ -39,7 +40,7 @@ public class ModifProfil extends HttpServlet {
             
         try {
             request.setAttribute("utilisateur", UtilisateurManager.rechercherUtilisateur(utilisateurConnecter.getNoUtilisateur()));
-        } catch (DALException e) {
+        } catch (DALException | BusinessException e) {
             
             errorMessage = e.getMessage();
             request.setAttribute("errorMessage", errorMessage);
@@ -54,6 +55,7 @@ public class ModifProfil extends HttpServlet {
 		Utilisateur utilisateurRecupNum = new Utilisateur();
 		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecter");
 		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
+		System.out.println(noUtilisateur);
 		
 		String pseudo = request.getParameter("pseudo");
 		String nom = request.getParameter("nom");
@@ -72,7 +74,7 @@ public class ModifProfil extends HttpServlet {
 		
 		request.getSession().setAttribute("utilisateurConnecter", utilisateur);
 		
-		response.sendRedirect("MonProfil");
+		request.getServletContext().getRequestDispatcher("/WEB-INF/ModifProfil.jsp").forward(request, response);
 		
 	}
 

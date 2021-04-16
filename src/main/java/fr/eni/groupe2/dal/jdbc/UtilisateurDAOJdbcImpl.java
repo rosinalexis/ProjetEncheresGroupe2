@@ -10,15 +10,31 @@ import java.util.List;
 
 import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.dal.DAO;
+import fr.eni.groupe2.dal.jdbc.helper.DBConnexion;
 import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
-	private final static String LISTER = "SELECT * FROM UTILISATEURS;";
-	private final static String INSERER = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur ) values (?,?,?,?,?,?,?,?,?,?,?);";
-	private final static String RECHERCHER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur =?";
-	private final static String MODIFIER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur = ?";
+	private final static String LISTER = "SELECT no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur "
+										+ " FROM UTILISATEURS;";
+	
+	private final static String RECHERCHER = "SELECT no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur  "
+											+ "FROM UTILISATEURS "
+											+ "WHERE no_utilisateur =?;";
+	
+	private final static String RECHERCHERPARPSEUDO = "SELECT no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur  "
+											+ "FROM UTILISATEURS "
+											+ "WHERE pseudo = ?;";
+	
+	private final static String CONNEXION = "SELECT no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur  "
+											+ "FROM UTILISATEURS WHERE pseudo =? AND mot_de_passe=?;";
+
+	private final static String INSERER = "INSERT INTO UTILISATEURS(no_utilisateur,pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit,  administrateur )"
+										+ " VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+	
+	private final static String MODIFIER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?"
+										+ "WHERE no_utilisateur = ?;";
 
 	@Override
 	public void insert(Utilisateur u) throws DALException {
@@ -82,7 +98,7 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 	}
 
 	@Override
-	public Utilisateur selectByID(int noUtilisateur) throws DALException {
+	public Utilisateur selectByID(int noUtilisateur) throws DALException, BusinessException {
 
 		Connection cnx = null;
 		PreparedStatement pstmt = null;
@@ -121,8 +137,8 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
 				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 			}
-		} catch (SQLException | BusinessException e) {
-			throw new DALException("Probleme lors de la rechercher d'un utilisateur -" + e.getMessage());
+		} catch (SQLException e) {
+			throw new DALException("Probleme lors de la rechercher d'un utilisateur -", e);
 
 		} finally {
 			DBConnexion.seDeconnecter(cnx, pstmt);
@@ -131,8 +147,11 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 		return utilisateur;
 	}
 
+	/**
+	 * Methode implementée permettant de lister les utilisateurs
+	 */
 	@Override
-	public List<Utilisateur> selectAll() throws DALException {
+	public List<Utilisateur> selectAll() throws DALException, BusinessException {
 
 		Connection cnx = null;
 		Statement stmt = null;
@@ -149,37 +168,31 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
 			while (rs.next()) {
 				utilisateur = new Utilisateur();
-				try {
-					utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
 
-					utilisateur.setPseudo(rs.getString("pseudo"));
-					utilisateur.setNom(rs.getString("nom"));
-					utilisateur.setPrenom(rs.getString("prenom"));
-					utilisateur.setEmail(rs.getString("email"));
+				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
 
-					rs.getString("telephone");
-					if (rs.wasNull())
-						utilisateur.setTelephone("inconnu");
-					else
-						utilisateur.setTelephone(rs.getString("telephone"));
+				utilisateur.setPseudo(rs.getString("pseudo"));
+				utilisateur.setNom(rs.getString("nom"));
+				utilisateur.setPrenom(rs.getString("prenom"));
+				utilisateur.setEmail(rs.getString("email"));
 
-					utilisateur.setRue(rs.getString("rue"));
-					utilisateur.setCodePostal(rs.getString("code_postal"));
-					utilisateur.setVille(rs.getString("ville"));
-					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
-					utilisateur.setCredit(rs.getInt("credit"));
-					utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+				rs.getString("telephone");
+				if (rs.wasNull())
+					utilisateur.setTelephone("<<inconnu>>");
+				else
+					utilisateur.setTelephone(rs.getString("telephone"));
 
-				} catch (BusinessException e) {
-
-					e.printStackTrace();
-				}
-
+				utilisateur.setRue(rs.getString("rue"));
+				utilisateur.setCodePostal(rs.getString("code_postal"));
+				utilisateur.setVille(rs.getString("ville"));
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+				utilisateur.setCredit(rs.getInt("credit"));
+				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 				listeUtilisateurs.add(utilisateur);
 			}
 		} catch (SQLException e) {
 
-			throw new DALException("Problème lors de la tentative de listage des Utilisateurs -" + e.getMessage());
+			throw new DALException("Problème lors de la tentative de listage des Utilisateurs -", e);
 		} finally {
 			DBConnexion.seDeconnecter(cnx, stmt);
 		}
@@ -192,32 +205,85 @@ public class UtilisateurDAOJdbcImpl implements DAO<Utilisateur> {
 
 	}
 
-	public static Utilisateur validerConnection(String login, String password) {
+	public static Utilisateur validerConnection(String login, String password) throws DALException, BusinessException {
 
 		Connection cnx = null;
-		try {
-			cnx = DBConnexion.seConnecter();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Utilisateur utilisateur = null;
+
+		cnx = DBConnexion.seConnecter();
 
 		try {
-			String reqSql = "SELECT * FROM UTILISATEURS WHERE pseudo ='" + login + "' AND mot_de_passe='" + password
-					+ "'";
-			Statement st = cnx.createStatement();
-			ResultSet rs = st.executeQuery(reqSql);
+			pstmt = cnx.prepareStatement(CONNEXION);
+			pstmt.setString(1, login);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+
 			if (rs.next()) {
-				return new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"),
-						rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"),
+				utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"),
+						rs.getString("prenom"), rs.getString("email"),
+						(rs.wasNull() ? "<<inconnu>>" : rs.getString("telephone")), rs.getString("rue"),
 						rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"),
 						rs.getInt("credit"), rs.getBoolean("administrateur"));
-			} else
-				return null;
-		} catch (Exception exception) {
-			exception.printStackTrace();
+			}
+		} catch (SQLException e) {
+			throw new DALException("problème de validation sur la connexion à l'application", e);
 		}
-		return null;
+
+		return utilisateur;
 	}
 
+
+	public static Utilisateur AffichierUtilisateur(String Pseudo) throws DALException, BusinessException {
+		
+		Connection cnx = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Utilisateur utilisateur = new Utilisateur();
+
+		cnx = DBConnexion.seConnecter();
+		try {
+			pstmt = cnx.prepareStatement(RECHERCHERPARPSEUDO);
+			pstmt.setString(1,  Pseudo);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));
+				utilisateur.setPseudo(rs.getString("pseudo"));
+				utilisateur.setNom(rs.getString("nom"));
+				utilisateur.setPrenom(rs.getString("prenom"));
+				utilisateur.setEmail(rs.getString("email"));
+
+				rs.getString("telephone");
+				if (rs.wasNull())
+					utilisateur.setTelephone("inconnu");
+				else
+					utilisateur.setTelephone(rs.getString("telephone"));
+
+				utilisateur.setRue(rs.getString("rue"));
+
+				utilisateur.setCodePostal(rs.getString("code_postal"));
+
+				utilisateur.setVille(rs.getString("ville"));
+
+				utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+
+				utilisateur.setCredit(rs.getInt("credit"));
+
+				utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+			}
+		} catch (SQLException e) {
+			throw new DALException("Probleme lors de la rechercher d'un utilisateur -", e);
+
+		} finally {
+			DBConnexion.seDeconnecter(cnx, pstmt);
+		}
+
+		return utilisateur;
+	}
+	
 }
+	
+		

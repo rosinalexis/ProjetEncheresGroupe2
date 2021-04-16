@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
+ * <strong>Classe</strong> metier permettant d'instancier un object de type Enchere
  * @author Groupe2
  * @description projet ENCHERES ENI 2021. La Classe Enchere permet de renseigner les informations d'une enchère.
  * 
@@ -16,8 +16,9 @@ public class Enchere implements Serializable{
 	// les attribues d'une enchère
 	private Date dateEnchere; 
 	private int montantEnchere;
-	private int noUtilisateur;
-	private int noArticle;
+	private Utilisateur utilisateur;
+	private ArticleVendu article;
+	
 	
 	/**
 	 * Le constructeur par défault de ma classe. 
@@ -25,7 +26,8 @@ public class Enchere implements Serializable{
 	public Enchere() {
 		
 	}
-
+	
+	
 	/**
 	 * Le constructeur surchargé permettant d'instancier un object de type enchère en hydratant les attribus ci-dessous
 	 * @param dateEnchère : la date de l'enchère.
@@ -35,81 +37,85 @@ public class Enchere implements Serializable{
 		setDateEnchere(dateEnchere);
 		setMontantEnchere(montantEnchere);
 	}
-	
-	
 
+	
 	/**
+	 * Le constructeur surchargé permettant d'instancier un object de type enchère en hydratant les attribus ci-dessous
 	 * @param dateEnchere
 	 * @param montantEnchere
 	 * @param noUtilisateur
 	 * @param noArticle
 	 */
-	public Enchere(int noUtilisateur, int noArticle, Date dateEnchere, int montantEnchere) {
-		setDateEnchere(dateEnchere);
-		setMontantEnchere(montantEnchere);
-		setNoUtilisateur(noUtilisateur);
-		setNoArticle(noArticle);
+	public Enchere(Utilisateur Utilisateur, ArticleVendu Article, Date  dateEnchere, int montantEnchere) {
+		this(dateEnchere, montantEnchere);
+		setUtilisateur(Utilisateur);
+		setArticle(Article);
+		
 	}
-
-	//les getters et setter 
 	
+	
+	@Override
+	public String toString() {
+		return "Enchere [dateEnchere=" + getDateEnchere() + ", montantEnchere=" + getMontantEnchere() + ", utilisateur="
+				+ getUtilisateur() + ", article=" + getArticle() + "]";
+	}
+	
+	//les getters et setter 
 	public Date getDateEnchere() {
 		return dateEnchere;
 	}
 
-	/**
-	 * Méthode  de type mutateur permettant d'hydrater l'attribut date d'une enchère.
-	 * @param dateEnchere the dateEnchere to set
-	 */
+
+
 	public void setDateEnchere(Date dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
 
-	
+
+
 	public int getMontantEnchere() {
 		return montantEnchere;
 	}
 
-	/**
-	 * Méthode  de type mutateur permettant d'hydrater l'attribut montant d'une enchère.
-	 * @param montantEnchere the montantEnchere to set
-	 */
+
+	
 	public void setMontantEnchere(int montantEnchere) {
 		this.montantEnchere = montantEnchere;
 	}
-	
 
-	/**
-	 * @return the noUtilisateur
-	 */
-	public int getNoUtilisateur() {
-		return noUtilisateur;
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
-	/**
-	 * @param noUtilisateur the noUtilisateur to set
-	 */
-	public void setNoUtilisateur(int noUtilisateur) {
-		this.noUtilisateur = noUtilisateur;
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
-	/**
-	 * @return the noArticle
-	 */
-	public int getNoArticle() {
-		return noArticle;
+
+
+	public ArticleVendu getArticle() {
+		return article;
 	}
 
-	/**
-	 * @param noArticle the noArticle to set
-	 */
-	public void setNoArticle(int noArticle) {
-		this.noArticle = noArticle;
-	}
 
-	@Override
-	public String toString() {
-		return "Enchere [dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + ", noUtilisateur="
-				+ noUtilisateur + ", noArticle=" + noArticle + "]";
+	public void setArticle(ArticleVendu article) {
+		this.article = article;
 	}
 }
+	
+	
+
+
+
+
+	
+	
+	
+	
+	
+
+	

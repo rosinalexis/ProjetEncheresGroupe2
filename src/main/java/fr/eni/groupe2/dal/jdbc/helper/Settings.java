@@ -1,4 +1,4 @@
-package fr.eni.groupe2.dal.jdbc;
+package fr.eni.groupe2.dal.jdbc.helper;
 
 import java.io.IOException;
 import java.util.Properties;

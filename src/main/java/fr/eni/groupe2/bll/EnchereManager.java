@@ -1,11 +1,12 @@
 package fr.eni.groupe2.bll;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import fr.eni.groupe2.bo.ArticleVendu;
 import fr.eni.groupe2.bo.Enchere;
-import fr.eni.groupe2.bo.ListeEnchere;
+import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.dal.DAO;
 import fr.eni.groupe2.dal.DAOFactory;
 import fr.eni.groupe2.dal.jdbc.EnchereDAOJdbcImpl;
@@ -25,42 +26,49 @@ public class EnchereManager {
 		private static  DAO<Enchere> enchereDAO= DAOFactory.getEnchereDAO();
 		
 		/**
-		 * Méthode permettant de lister tout les enchères dans la base de données. 
+		 * Méthode permettant de lister tous les enchères dans la base de données. 
 		 * @return
 		 * @throws DALException
+		 * @throws BusinessException 
 		 */
-		public static List<Enchere> listerEnchere() throws DALException {
-			
+		public static List<Enchere> listerEnchere() throws DALException, BusinessException {
 			return enchereDAO.selectAll();
 		}
 		
 		
 		/**
-		 * Méthode permettant de lister tout les enchères  avec leurs informations dans la base de données. 
+		 * Méthode permettant de lister tous les enchères d'un utilisateur avec leurs informations dans la base de données. 
 		 * @return
 		 * @throws DALException
+		 * @throws BusinessException 
 		 */
-		public static List<ListeEnchere> afficherEnchere() throws DALException{
-			List<ListeEnchere> listeEncheres = new ArrayList<ListeEnchere>();
-			List<Enchere> liste = new ArrayList<Enchere>(); 
-			liste  =listerEnchere();
-			
-			for (Enchere e : liste) {
-				
-				int noUtilisateur = e.getNoUtilisateur();
-				int noArticle = e.getNoArticle(); 
-				
-				ListeEnchere ListeEnchereTrans= new ListeEnchere();
-				ListeEnchereTrans =EnchereDAOJdbcImpl.listerEncheres(noUtilisateur, noArticle);
-				
-				listeEncheres.add(ListeEnchereTrans); 
-			}
-			
-			return listeEncheres;
+		public static List<Enchere> listerEnchereParPseudo(String pseudo) throws DALException, BusinessException{
+			return EnchereDAOJdbcImpl.AfficherEncheresUtilisateursParPseudo(pseudo);
 		}
-
+		
+		
+		public static List<Enchere> listerEnchereParCategorie(String categorie) throws DALException, BusinessException{
+			return EnchereDAOJdbcImpl.AfficherEncheresUtilisateursParCategorie(categorie);
+		}
+		
+		public static List<Enchere> listerEnchereParMot(String mot) throws DALException, BusinessException{
+			return EnchereDAOJdbcImpl.AfficherEncheresUtilisateursParMot(mot);
+		}
+		
+		
 		public Enchere insertEnchere(int noUtilisateur, int noArticle, Date dateEnchere, int montantEnchere) throws DALException {
-			Enchere enchere = new Enchere(noUtilisateur, noArticle, dateEnchere, montantEnchere);
+			Enchere enchere = new Enchere();
+			Utilisateur u= new Utilisateur();
+			u.setNoUtilisateur(noUtilisateur);
+			
+			ArticleVendu a = new ArticleVendu(); 
+			a.setNoArticle(noArticle);
+			
+			enchere.setUtilisateur(u);
+			enchere.setArticle(a);
+			enchere.setDateEnchere(dateEnchere);
+			enchere.setMontantEnchere(montantEnchere);
+			
 			BusinessException exception = new BusinessException(null);
 			EnchereDAOJdbcImpl enchereDAO = new EnchereDAOJdbcImpl();
 			int noEnchere = 0;
@@ -73,9 +81,10 @@ public class EnchereManager {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Enchere enchereAvecNoEnchere = new Enchere(noUtilisateur, noArticle, dateEnchere, montantEnchere);
+			//Enchere enchereAvecNoEnchere = new Enchere();
 			
-			return enchereAvecNoEnchere;
+			
+			return enchere;
 		}
 		
 		

@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.groupe2.bll.EnchereManager;
-import fr.eni.groupe2.bo.ListeEnchere;
+import fr.eni.groupe2.bo.Categorie;
+import fr.eni.groupe2.bo.Enchere;
 import fr.eni.groupe2.bo.Utilisateur;
+import fr.eni.groupe2.dal.jdbc.CategorieDAOJdbcImpl;
 import  fr.eni.groupe2.dal.jdbc.UtilisateurDAOJdbcImpl;
+import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 @WebServlet(urlPatterns="/Connexion", loadOnStartup = 1)
@@ -31,37 +34,40 @@ public class Connexion extends HttpServlet {
 	};	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String login = request.getParameter("id");
 		String password = request.getParameter("mdp");
 		String errorMessage ="";
-		List<ListeEnchere> listeEncheres = new ArrayList<ListeEnchere>() ;
+		List<Enchere> listeEncheres = new ArrayList<Enchere>() ;
+		List<Categorie> listeCategories = new ArrayList<Categorie>() ;
 		
 		request.setAttribute("login", login);
 		request.setAttribute("password", password);
 	
-		Utilisateur utilisateurConnecter = UtilisateurDAOJdbcImpl.validerConnection(login, password);
-		
-		if(utilisateurConnecter != null) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("utilisateurConnecter", utilisateurConnecter);
+		try {
+			Utilisateur utilisateurConnecter = UtilisateurDAOJdbcImpl.validerConnection(login, password);
 			
-			try {
-				listeEncheres= EnchereManager.afficherEnchere();
-			} catch (DALException e) {
-				errorMessage = e.getMessage();
-			}
-			
-			if(!errorMessage.isEmpty()) {
-				request.setAttribute("errorMessage",errorMessage);
+			if(utilisateurConnecter != null) {
+				HttpSession session = request.getSession(true);
+				session.setAttribute("utilisateurConnecter", utilisateurConnecter);
+				listeEncheres= EnchereManager.listerEnchere();
+				listeCategories= CategorieDAOJdbcImpl.selectAll();
+			} 
+			else {
+				request.setAttribute("errorMessage", "MAUVAISE CONNEXION");
 				request.getRequestDispatcher("WEB-INF/Connexion.jsp").forward(request, response);
-			}else {
-				request.setAttribute("listeEncheres",listeEncheres);
-				request.getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(request, response);
 			}
-			
-		} else {
-			request.setAttribute("errorMessage", "MAUVAISE CONNEXION");
+		} catch (DALException | BusinessException e) {
+			errorMessage = e.getMessage();
+		} 
+		if(!errorMessage.isEmpty()) {
+			request.setAttribute("errorMessage",errorMessage);
 			request.getRequestDispatcher("WEB-INF/Connexion.jsp").forward(request, response);
+		}else {
+			request.setAttribute("listeCategories", listeCategories);
+			request.setAttribute("listeEncheres",listeEncheres);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/pageAccueilTest.jsp").forward(request, response);
 		}
 
 		

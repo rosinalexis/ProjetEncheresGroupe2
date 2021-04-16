@@ -2,6 +2,7 @@ package fr.eni.groupe2.dal;
 
 import java.util.List;
 
+import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 /**
  * 
@@ -13,10 +14,43 @@ import fr.eni.groupe2.messages.DALException;
  */
 public interface DAO <T> {
 
-	public void insert(T u) throws DALException; 
-	public T update (T u) throws DALException; 
-	public T selectByID(int id) throws DALException; 
-	public List<T> selectAll() throws DALException; 
-	public void delete(T u);
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 * @throws DALException
+	 * @throws BusinessException 
+	 */
+	T selectByID(int id) throws DALException, BusinessException; 
+	
+	/**
+	 * 
+	 * @return
+	 * @throws DALException
+	 * @throws BusinessException 
+	 */
+	List<T> selectAll() throws DALException, BusinessException; 
+	
+	/**
+	 * 
+	 * @param u
+	 * @throws DALException
+	 */
+	void insert(T u) throws DALException; 
+	
+	/**
+	 * 
+	 * @param u
+	 * @return
+	 * @throws DALException
+	 */
+	T update (T u) throws DALException; 
+	
+	/**
+	 * 
+	 * @param u
+	 * @throws DALException
+	 */
+	void delete(T u)throws DALException;
 	
 }

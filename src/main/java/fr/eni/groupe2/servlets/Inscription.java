@@ -64,7 +64,6 @@ public class Inscription extends HttpServlet {
 					
 					// je retourne un msg pour dire que l'inscription est ok
 					request.setAttribute("etatInscription", "inscription ok");
-					request.setAttribute("utilisateurs", UtilisateurManager.listerUtlisateur());
 				}
 
 			} else {
@@ -78,18 +77,14 @@ public class Inscription extends HttpServlet {
 			request.setAttribute("errorMessage", errorMessage);
 		}
 		
-		if ( errorMessage.isEmpty()) {
-			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
-		}
-		else {
-			
+		if (errorMessage.isEmpty()) {
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateurConnecter", utilisateur);
-			
 			// revoir la redirection vers /WEB-INF/Home.jsp mais pour les test je garde 
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
+		}else {
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Inscription.jsp").forward(request, response);
 		}
-		
+	
 	}
 }

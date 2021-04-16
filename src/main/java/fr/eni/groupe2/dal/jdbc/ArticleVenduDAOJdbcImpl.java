@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.eni.groupe2.bo.ArticleVendu;
+import fr.eni.groupe2.bo.Utilisateur;
 import fr.eni.groupe2.dal.DAO;
+import fr.eni.groupe2.dal.jdbc.helper.DBConnexion;
+import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 public class ArticleVenduDAOJdbcImpl implements DAO<ArticleVendu>{
@@ -17,7 +20,6 @@ public class ArticleVenduDAOJdbcImpl implements DAO<ArticleVendu>{
 	@Override
 	public void insert(ArticleVendu u) throws DALException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -41,7 +43,7 @@ public class ArticleVenduDAOJdbcImpl implements DAO<ArticleVendu>{
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				articleVendu.setNoArticle(rs.getInt("no_article"));
+				//articleVendu.setNoArticle(rs.getInt("no_article"));
 				articleVendu.setNomArticle(rs.getString("nom_article"));
 				articleVendu.setDescription(rs.getString("description"));
 				articleVendu.setDateDebutEncheres(rs.getDate("date_debut_encheres"));
@@ -58,9 +60,6 @@ public class ArticleVenduDAOJdbcImpl implements DAO<ArticleVendu>{
 					articleVendu.setPrixVente(-1);
 				else 
 					articleVendu.setPrixInitial(rs.getInt("prix_vente"));
-				
-				articleVendu.setNoUtilisateur(rs.getInt("no_utilisateur"));
-				articleVendu.setNoUtilisateur(rs.getInt("no_categorie"));
 			
 			}
 		} catch (SQLException e) {
