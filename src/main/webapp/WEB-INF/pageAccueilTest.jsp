@@ -35,7 +35,7 @@
 				<ul class="nav">
 				
 					<li class="nav-item">
-						<a href="Inscription" class="nav-link link-dark px-2 text-white "> 
+						<a href="Encherir" class="nav-link link-dark px-2 text-white "> 
 							Enchères
 						</a>
 					</li>

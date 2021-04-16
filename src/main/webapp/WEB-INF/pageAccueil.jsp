@@ -104,30 +104,56 @@
 		<div class="row" style='padding-bottom: 2%;'></div>
 		<div>
 			<!---------VERIFICATION ------>
-			<c:if test="${!empty errorMessage }">
-				<div class="alert alert-danger" role="alert">
-					<c:out value="${errorMessage}"></c:out>
-				</div>
-			</c:if>
+			<section id="verification">
+		<c:if test="${!empty errorMessage }">
+			<div class="alert alert-danger" role="alert">
+				<c:out value="${errorMessage}"></c:out>
+			</div>
+		</c:if>
+	</section>
 
-			<c:forEach items="${ listeEncheres }" var="listeEnchere">
-				<div class="bg-danger col-md-5 d-inline" style="margin: 5px 20px;">
-					<div class="bg-primary col-md-4"
-						style="height: 150px; margin: 0 5px;">
-						<img
-							src="https://img.icons8.com/offices/100/000000/phone-contact.png" />
-					</div>
-					<div class="bg-danger  col m-1">
-						<h3><c:out value="${ listeEnchere.nomArticle }"/></h3>
-						<p>
-							 <c:out value="Prix :${ listeEnchere.prix }"/> <br> 
-							 <c:out value="Fin de l'enchère :${ listeEnchere.dateFinEnchere }"/> <br>
-							 <c:out value="Vendeur :${ listeEnchere.pseudo }"/> <br>
-						</p>
-					</div>
+	
+	<section class="my-5" id="lesEncheres" >
+		<div class="container">
+			<div class="card-deck ">
+				<c:forEach items="${ listeEncheres }" var="listeEnchere">
+					<div class="card mx-2" style="width: 480px; margin: 0;">
+						<div class="card-body   bg-white  border border-dark border-3">
+							<div class="row">
+								<div class="col">
+									<img class="card-img-top"
+										src="https://homepages.cae.wisc.edu/~ece533/images/boat.png"
+										alt="Card image cap">
+								</div>
 
-				</div>
-			</c:forEach>
+								<div class="col">
+									<h3>
+										<c:out value="${ listeEnchere.article.nomArticle }" />
+									</h3>
+									<p>
+										<strong>Prix:</strong>
+										<c:out value="${ listeEnchere.article.prixInitial }" />
+									</p>
+
+									<p>
+										<strong>Fin de l'enchère:</strong>
+										<c:out value="${ listeEnchere.article.dateFinEncheres }" />
+									</p>
+
+									<p>
+										<strong>Vendeur :</strong>
+										<c:out value="${ listeEnchere.utilisateur.pseudo }" />
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+
+			</div>
+		</div>
+
+	</section>
 
 		</div>
 		

@@ -18,7 +18,7 @@
             <!------------------------------------------------- todo_section --------------------------------------------->
 
             <div class="col-md-4 col-sm-12">
-                <div class="insertintoimage" style="   border: solid;
+                <div class="insertintoimage" style="   
                                                             width: 84%;
                                                             height: 26%;
                                                             margin-left: 8%;

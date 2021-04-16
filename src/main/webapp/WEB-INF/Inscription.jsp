@@ -27,7 +27,10 @@
 
 			<c:if test="${!empty etatInscription }">
 				<div class="alert alert-success" role="alert">
+			
 					<c:out value="${etatInscription}"></c:out>
+						<a href="Connexion"><button type="button" class="btn btn-success btn-block-annuler"style="float: right; margin-top:-1%">Se connecter</button></a>	
+			
 				</div>
 			</c:if>
 
@@ -122,6 +125,9 @@
 							class="btn btn-success btn-block-connexion" style="float: left"
 							 />
 					</div>
+					
+				
+					
 					<!---------BOUTON ANNULER ------>
 					<div class="col-md-2 col-md-offset-4">
 						<a href="Accueil"><button type="button" class="btn btn-success btn-block-annuler"

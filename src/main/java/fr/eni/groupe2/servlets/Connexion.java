@@ -67,7 +67,7 @@ public class Connexion extends HttpServlet {
 		}else {
 			request.setAttribute("listeCategories", listeCategories);
 			request.setAttribute("listeEncheres",listeEncheres);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/pageAccueilTest.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/pageAccueil.jsp").forward(request, response);
 		}
 
 		

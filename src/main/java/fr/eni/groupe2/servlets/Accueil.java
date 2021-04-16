@@ -44,7 +44,7 @@ public class Accueil extends HttpServlet {
 			
 			request.setAttribute("listeEncheres", listeEncheres);
 			request.setAttribute("listeCategories", listeCategories);
-			request.getRequestDispatcher("/WEB-INF/Accueiltest.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
 		}
 		
 	}
@@ -84,7 +84,7 @@ public class Accueil extends HttpServlet {
 			
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/Accueiltest.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(request, response);
 		
 		
 		

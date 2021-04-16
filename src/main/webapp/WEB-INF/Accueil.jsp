@@ -35,14 +35,17 @@
 					</section>
 
 					<section class="second">
-						<label for="categorie">Catégorie :</label> <select
-							class="form-control mb-2 mr-sm-2" id="categorie">
-							<option value="">Toutes Catégories</option>
-							<option value="info">Informatique</option>
-							<option value="ameu">Ameublement</option>
-							<option value="vet">Vêtement</option>
-							<option value="spetlois">Sport et Loisirs</option>
-						</select>
+						<label for="categorie"><strong>Catégorie:</strong></label> 
+							<select class="form-control" name="categorie" id="categorie">
+
+								<option selected></option>
+
+								<c:forEach items="${listeCategories}" var="listeCategorie">
+									<option value="${listeCategorie.libelle}">
+										<c:out value="${listeCategorie.libelle}" />
+									</option>
+								</c:forEach>
+							</select>
 					</section>
 
 					<script>
@@ -101,7 +104,9 @@
 	</div>
 
 
-	<footer class="my-5 pt-5 text-muted text-center text-small"> </footer>
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+
+	</footer>
 	<div class="forgot" style="font-size: 16px;"></div>
 
 	<script>
