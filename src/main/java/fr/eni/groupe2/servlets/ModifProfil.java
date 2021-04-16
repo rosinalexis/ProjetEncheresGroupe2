@@ -14,7 +14,13 @@ import fr.eni.groupe2.messages.BusinessException;
 import fr.eni.groupe2.messages.DALException;
 
 /**
- * Servlet implementation class ModifProfil
+ * 
+ * @author groupe 2 
+ * @projet ENI ENCHERES  AVRIL 2021
+ * @description La servlet modifProfil permet de modifier les données de l'utilisateur permet l'enregistrement de celui-ci en base.
+ * 
+ * 
+ *
  */
 @WebServlet("/ModifProfil")
 public class ModifProfil extends HttpServlet {
